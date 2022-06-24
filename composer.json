@@ -1,0 +1,34 @@
+{
+  "name": "gamboa.martin/template_1",
+  "description": "Template 1",
+  "type": "library",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Martin Gamboa",
+      "email": "gamboa.martin@gmail.com"
+    }
+  ],
+
+    "autoload": {
+        "psr-4": {
+          "html\\": "src/",
+          "config\\": "config/",
+          "base\\": "base/"
+        }
+    },
+    "require": {
+        "gamboa.martin/administrador": "^1.0.0",
+      "gamboa.martin/base_modelos": "dev-main",
+      "gamboa.martin/calculo": "dev-main",
+      "gamboa.martin/compresor": "dev-main",
+      "gamboa.martin/validacion": "dev-main",
+      "gamboa.martin/configuraciones": "dev-main",
+      "gamboa.martin/plugins": "dev-main",
+        "gamboa.martin/errores": "^1.0.0",
+        "gamboa.martin/test": "dev-main"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
