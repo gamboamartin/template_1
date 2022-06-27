@@ -76,8 +76,8 @@ class directivas{
     }
 
     /**
-     * @param stdClass $row_upd
-     * @param bool $value_vacio
+     * @param stdClass $row_upd Registro obtenido para actualizar
+     * @param bool $value_vacio Para altas en caso de que sea vacio o no existe el key
      * @return array|string
      */
     public function input_alias(stdClass $row_upd, bool $value_vacio): array|string
@@ -166,24 +166,26 @@ class directivas{
     }
 
     /**
-     * @param stdClass $row_upd
+     * @param stdClass $row_upd Registro obtenido para actualizar
      * @param bool $disable
      * @param string $name Usado para identificador css name input y place holder
      * @param string $place_holder
-     * @param bool $value_vacio
+     * @param bool $value_vacio Para altas en caso de que sea vacio o no existe el key
      * @return array|string
      */
     private function input_text_required(bool $disable, string $name, string $place_holder, stdClass $row_upd,
                                          bool $value_vacio ): array|string
     {
+
         $label = $this->html->label(id_css: $name, place_holder: $place_holder);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al generar label', data: $label);
         }
-        if($value_vacio){
+        if($value_vacio || !(isset($row_upd->$name))){
             $row_upd = new stdClass();
             $row_upd->$name = '';
         }
+
         $html= $this->html->text(disabled:$disable, id_css: $name, name: $name, place_holder: $place_holder,
             required: true, value: $row_upd->$name);
 
