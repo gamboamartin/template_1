@@ -175,10 +175,51 @@ class directivasTest extends test {
         $controler = new controlador_adm_seccion(link: $this->link, paths_conf: $this->paths_conf);
         //$controler->mensaje_exito = 'a'
         $resultado = $html->mensaje_warning($controler->mensaje_warning);
-        print_r($resultado);
+
         $this->assertIsString($resultado);
         $this->assertNotTrue(errores::$error);
         $this->assertStringContainsStringIgnoringCase("<div class='alert alert-warning' role='alert' ><strong>Advertencia!</strong> a.</div>", $resultado);
+        errores::$error = false;
+    }
+
+    /**
+     */
+    #[NoReturn] public function test_valida_data_label(): void
+    {
+        errores::$error = false;
+        $html = new directivas();
+        $html = new liberator($html);
+
+        $place_holder = '';
+        $name = '';
+
+
+        $resultado = $html->valida_data_label($name, $place_holder);
+        $this->assertIsArray($resultado);
+        $this->assertTrue(errores::$error);
+        $this->assertStringContainsStringIgnoringCase('Error $name debe tener info', $resultado['mensaje']);
+
+        errores::$error = false;
+
+        $place_holder = '';
+        $name = 'a';
+
+
+        $resultado = $html->valida_data_label($name, $place_holder);
+        $this->assertIsArray($resultado);
+        $this->assertTrue(errores::$error);
+        $this->assertStringContainsStringIgnoringCase('Error $place_holder debe tener info', $resultado['mensaje']);
+
+        errores::$error = false;
+
+        $place_holder = 'z';
+        $name = 'a';
+
+
+        $resultado = $html->valida_data_label($name, $place_holder);
+        $this->assertIsBool($resultado);
+        $this->assertNotTrue(errores::$error);
+        $this->assertTrue($resultado);
         errores::$error = false;
     }
 

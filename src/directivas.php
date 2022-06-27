@@ -304,6 +304,12 @@ class directivas{
         return $alert_warning;
     }
 
+    /**
+     * Verifica los datos de entrada de un label
+     * @param string $name Nombre del input
+     * @param string $place_holder Dato a mostrar dentro del input de manera inicial
+     * @return bool|array
+     */
     private function valida_data_label(string $name, string $place_holder): bool|array
     {
         $name = trim($name);
