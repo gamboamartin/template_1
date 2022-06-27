@@ -74,6 +74,27 @@ class directivasTest extends test {
         errores::$error = false;
     }
 
+    /**
+     */
+    #[NoReturn] public function test_input_codigo_bis(): void
+    {
+        errores::$error = false;
+        $html = new directivas();
+        //$html = new liberator($html);
+        $_GET['session_id'] = 1;
+        $cols = 1;
+        $row_upd = new stdClass();
+        $value_vacio = false;
+
+
+        $resultado = $html->input_codigo_bis($cols, $row_upd, $value_vacio);
+        $this->assertIsString($resultado);
+        $this->assertNotTrue(errores::$error);
+        $this->assertEquals("<div class='control-group col-sm-1'><label class='control-label' for='codigo_bis'>Codigo BIS</label><div class='controls'><input type='text' name='codigo_bis' value='' class='form-control'  required id='codigo_bis' placeholder='Codigo BIS' /></div></div>", $resultado);
+
+        errores::$error = false;
+    }
+
 
     /**
      * @throws JsonException
