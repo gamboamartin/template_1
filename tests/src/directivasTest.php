@@ -3,6 +3,7 @@ namespace tests\controllers;
 
 use gamboamartin\controllers\controlador_adm_seccion;
 use gamboamartin\errores\errores;
+use gamboamartin\test\liberator;
 use gamboamartin\test\test;
 use html\directivas;
 use JetBrains\PhpStorm\NoReturn;
@@ -23,6 +24,42 @@ class directivasTest extends test {
         $this->paths_conf->generales = '/var/www/html/cat_sat/config/generales.php';
         $this->paths_conf->database = '/var/www/html/cat_sat/config/database.php';
         $this->paths_conf->views = '/var/www/html/cat_sat/config/views.php';
+
+    }
+
+    /**
+     * @throws JsonException
+     */
+    #[NoReturn] public function test_input_text_required(): void
+    {
+        errores::$error = false;
+        $html = new directivas();
+        $html = new liberator($html);
+
+        $disable = false;
+        $name = 'a';
+        $place_holder = 'b';
+        $row_upd = new stdClass();
+        $value_vacio = false;
+        $resultado = $html->input_text_required($disable, $name, $place_holder, $row_upd, $value_vacio);
+        $this->assertIsString($resultado);
+        $this->assertNotTrue(errores::$error);
+        $this->assertEquals("<label class='control-label' for='a'>b</label><div class='controls'><input type='text' name='a' value='' class='form-control'  required id='a' placeholder='b' /></div>", $resultado);
+
+        errores::$error = false;
+
+        $disable = true;
+        $name = 'a';
+        $place_holder = 'b';
+        $row_upd = new stdClass();
+        $value_vacio = false;
+        $resultado = $html->input_text_required($disable, $name, $place_holder, $row_upd, $value_vacio);
+        $this->assertIsString($resultado);
+        $this->assertNotTrue(errores::$error);
+        $this->assertEquals("<label class='control-label' for='a'>b</label><div class='controls'><input type='text' name='a' value='' class='form-control' disabled required id='a' placeholder='b' /></div>", $resultado);
+
+        errores::$error = false;
+
 
     }
 

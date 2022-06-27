@@ -28,6 +28,10 @@ class directivas{
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al generar label', data: $label);
         }
+        $place_holder = trim($place_holder);
+        if($place_holder === ''){
+            return $this->error->error(mensaje: 'Error $place_holder debe tener info', data: $place_holder);
+        }
         $html= $this->html->button_href(accion: $accion,etiqueta:  $etiqueta, registro_id: $registro_id,
             seccion:  $seccion, style: $style);
 
@@ -76,6 +80,7 @@ class directivas{
     }
 
     /**
+     * Genera un input de tipo alias
      * @param stdClass $row_upd Registro obtenido para actualizar
      * @param bool $value_vacio Para altas en caso de que sea vacio o no existe el key
      * @return array|string
@@ -166,10 +171,12 @@ class directivas{
     }
 
     /**
+     * Genera un input tipo required
+     * @version 0.32.2
      * @param stdClass $row_upd Registro obtenido para actualizar
-     * @param bool $disable
+     * @param bool $disable si disabled retorna el input como disabled
      * @param string $name Usado para identificador css name input y place holder
-     * @param string $place_holder
+     * @param string $place_holder Texto a mostrar en el input
      * @param bool $value_vacio Para altas en caso de que sea vacio o no existe el key
      * @return array|string
      */
@@ -177,12 +184,21 @@ class directivas{
                                          bool $value_vacio ): array|string
     {
 
+        $name = trim($name);
+        if($name === ''){
+            return $this->error->error(mensaje: 'Error $name debe tener info', data: $name);
+        }
+        $place_holder = trim($place_holder);
+        if($place_holder === ''){
+            return $this->error->error(mensaje: 'Error $place_holder debe tener info', data: $place_holder);
+        }
+
         $label = $this->html->label(id_css: $name, place_holder: $place_holder);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al generar label', data: $label);
         }
+
         if($value_vacio || !(isset($row_upd->$name))){
-            $row_upd = new stdClass();
             $row_upd->$name = '';
         }
 
