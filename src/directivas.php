@@ -111,8 +111,22 @@ class directivas{
         return "<div class='control-group col-sm-6'>$html</div>";
     }
 
+    /**
+     * @param int $cols Numero de columnas boostrap
+     * @version 0.32.4
+     * @param stdClass $row_upd Registro obtenido para actualizar
+     * @param bool $value_vacio Para altas en caso de que sea vacio o no existe el key
+     * @return array|string
+     */
     public function input_codigo(int $cols, stdClass $row_upd, bool $value_vacio): array|string
     {
+
+        if($cols<=0){
+            return $this->error->error(mensaje: 'Error cold debe ser mayor a 0', data: $cols);
+        }
+        if($cols>=13){
+            return $this->error->error(mensaje: 'Error cold debe ser menor o igual a  12', data: $cols);
+        }
 
         $html =$this->input_text_required(disable: false,name: 'codigo',place_holder: 'Codigo',row_upd: $row_upd,
             value_vacio: $value_vacio);
