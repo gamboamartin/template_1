@@ -47,6 +47,7 @@ class html{
 
     /**
      * Funcion que genera un boton de tipo link con href
+     * @version 0.32.3
      * @param string $accion Accion a ejecutar
      * @param string $etiqueta Etiqueta de boton
      * @param int $registro_id Registro a mandar transaccion
@@ -58,22 +59,11 @@ class html{
                                 string $style): string|array
     {
 
-        $seccion = trim($seccion);
-        if($seccion === ''){
-            return $this->error->error(mensaje: 'Error la $seccion esta vacia', data: $seccion);
+        $valida = $this->valida_input(accion: $accion,etiqueta:  $etiqueta, seccion: $seccion,style:  $style);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al validar datos', data: $valida);
         }
-        $accion = trim($accion);
-        if($accion === ''){
-            return $this->error->error(mensaje: 'Error la $accion esta vacia', data: $accion);
-        }
-        $style = trim($style);
-        if($style === ''){
-            return $this->error->error(mensaje: 'Error la $style esta vacia', data: $style);
-        }
-        $etiqueta = trim($etiqueta);
-        if($etiqueta === ''){
-            return $this->error->error(mensaje: 'Error la $etiqueta esta vacia', data: $etiqueta);
-        }
+
         $session_id = (new generales())->session_id;
 
         if($session_id === ''){
@@ -146,6 +136,27 @@ class html{
         $html = "<input type='text' name='$name' value='$value' class='form-control' $disabled_html $required_html ";
         $html.= "id='$id_css' placeholder='$place_holder' />";
         return $html;
+    }
+
+    public function valida_input(string $accion, string $etiqueta, string $seccion, string $style): bool|array
+    {
+        $seccion = trim($seccion);
+        if($seccion === ''){
+            return $this->error->error(mensaje: 'Error la $seccion esta vacia', data: $seccion);
+        }
+        $accion = trim($accion);
+        if($accion === ''){
+            return $this->error->error(mensaje: 'Error la $accion esta vacia', data: $accion);
+        }
+        $style = trim($style);
+        if($style === ''){
+            return $this->error->error(mensaje: 'Error la $style esta vacia', data: $style);
+        }
+        $etiqueta = trim($etiqueta);
+        if($etiqueta === ''){
+            return $this->error->error(mensaje: 'Error la $etiqueta esta vacia', data: $etiqueta);
+        }
+        return true;
     }
 
 

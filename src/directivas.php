@@ -24,16 +24,32 @@ class directivas{
     private function button_href(string $accion, string $etiqueta, string $name, string $place_holder, int $registro_id,
                                  string $seccion, string $style): array|string
     {
-        $label = $this->html->label(id_css: $name, place_holder: $place_holder);
+
+        $valida = $this->valida_data_label(name: $name,place_holder:  $place_holder);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al validar datos ', data: $valida);
+        }
+
+        $valida = (new html())->valida_input(accion: $accion,etiqueta:  $etiqueta, seccion: $seccion,style:  $style);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al validar datos', data: $valida);
+        }
+
+        $label = $this->label_input(name: $name,place_holder: $place_holder);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al generar label', data: $label);
         }
+
         $place_holder = trim($place_holder);
         if($place_holder === ''){
             return $this->error->error(mensaje: 'Error $place_holder debe tener info', data: $place_holder);
         }
         $html= $this->html->button_href(accion: $accion,etiqueta:  $etiqueta, registro_id: $registro_id,
             seccion:  $seccion, style: $style);
+
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al generar html', data: $html);
+        }
 
         return $label."<div class='controls'>$html</div>";
 
@@ -184,16 +200,12 @@ class directivas{
                                          bool $value_vacio ): array|string
     {
 
-        $name = trim($name);
-        if($name === ''){
-            return $this->error->error(mensaje: 'Error $name debe tener info', data: $name);
-        }
-        $place_holder = trim($place_holder);
-        if($place_holder === ''){
-            return $this->error->error(mensaje: 'Error $place_holder debe tener info', data: $place_holder);
+        $valida = $this->valida_data_label(name: $name,place_holder:  $place_holder);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al validar datos ', data: $valida);
         }
 
-        $label = $this->html->label(id_css: $name, place_holder: $place_holder);
+        $label = $this->label_input(name: $name,place_holder: $place_holder);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al generar label', data: $label);
         }
@@ -207,6 +219,20 @@ class directivas{
 
         return $label."<div class='controls'>$html</div>";
 
+    }
+
+    private function label_input(string $name, string $place_holder): array|string
+    {
+        $valida = $this->valida_data_label(name: $name,place_holder:  $place_holder);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al validar datos ', data: $valida);
+        }
+
+        $label = $this->html->label(id_css: $name, place_holder: $place_holder);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al generar label', data: $label);
+        }
+        return $label;
     }
 
 
@@ -246,5 +272,18 @@ class directivas{
             }
         }
         return $alert_warning;
+    }
+
+    private function valida_data_label(string $name, string $place_holder): bool|array
+    {
+        $name = trim($name);
+        if($name === ''){
+            return $this->error->error(mensaje: 'Error $name debe tener info', data: $name);
+        }
+        $place_holder = trim($place_holder);
+        if($place_holder === ''){
+            return $this->error->error(mensaje: 'Error $place_holder debe tener info', data: $place_holder);
+        }
+        return true;
     }
 }
