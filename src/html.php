@@ -3,6 +3,7 @@ namespace html;
 use base\frontend\params_inputs;
 use config\generales;
 use gamboamartin\errores\errores;
+use stdClass;
 
 class html{
     private errores $error;
@@ -74,6 +75,33 @@ class html{
         return "<a role='button' href='$link' class='btn btn-$style col-sm-12'>$etiqueta</a>";
     }
 
+    public function select(int $cols, int $id_selected, string $label,string $name, array $values): array|string
+    {
+        $label = "<label class='control-label' for='$name'>$label</label>";
+        $div_controls_ini = "<div class='controls'>";
+        $select_in = "<select class='form-control selectpicker color-secondary $name' id='$name' name='$name' >";
+        $div_contenedor_ini = "<div class='control-group col-sm-$cols'>";
+        $options_html = '';
+        foreach ($values as $value=>$descripcion_select){
+            $value = (int)$value;
+            $selected = false;
+            if($value === $id_selected){
+                $selected = true;
+            }
+            $option_html = $this->option(descripcion: $descripcion_select,selected:  $selected, value: $value);
+            if(errores::$error){
+                return $this->error->error(mensaje: 'Error al generar option', data: $option_html);
+            }
+            $options_html.=$option_html;
+        }
+        $div_controls_fin = "</div>";
+        $div_contenedor_fin = "</div>";
+        $select_fin = '</select>';
+
+        return $div_contenedor_ini.$label.$div_controls_ini.$select_in.$options_html.$select_fin.$div_controls_fin.$div_contenedor_fin;
+
+    }
+
     /**
      * Genera un label html
      * @version 0.10.0
@@ -94,6 +122,17 @@ class html{
 
         return "<label class='control-label' for='$id_css'>$place_holder</label>";
     }
+
+    private function option(string $descripcion, bool $selected, mixed $value): string
+    {
+        $selected_html = '';
+        if($selected){
+            $selected_html = 'selected';
+        }
+        return "<option value='$value' $selected_html>$descripcion</option>";
+    }
+
+
 
     /**
      * Genera um input text basado en los parametros enviados
