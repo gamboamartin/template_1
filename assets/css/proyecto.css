@@ -4,3 +4,8 @@
 .btn-alta{
     margin-left: 15px;
 }
+.selectpicker-primary{
+    padding-top: 0!important;
+    padding-bottom: 10px !important;
+    border: 0 !important;
+}

@@ -251,6 +251,13 @@ class directivas{
 
     }
 
+    /**
+     * Genera el label de in input para ser mostrado en el front
+     * @version 0.37.5
+     * @param string $name Nombre del input
+     * @param string $place_holder Etiqueta a mostrar
+     * @return array|string
+     */
     private function label_input(string $name, string $place_holder): array|string
     {
         $valida = $this->valida_data_label(name: $name,place_holder:  $place_holder);

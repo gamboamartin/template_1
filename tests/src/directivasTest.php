@@ -133,6 +133,26 @@ class directivasTest extends test {
     }
 
     /**
+     */
+    #[NoReturn] public function test_label_input(): void
+    {
+        errores::$error = false;
+        $html = new directivas();
+        $html = new liberator($html);
+
+        $place_holder = 'a';
+        $name = 'c';
+
+
+        $resultado = $html->label_input($name, $place_holder);
+        $this->assertIsString($resultado);
+        $this->assertNotTrue(errores::$error);
+        $this->assertEquals("<label class='control-label' for='c'>a</label>", $resultado);
+
+        errores::$error = false;
+    }
+
+    /**
      * @throws JsonException
      */
     #[NoReturn] public function test_mensaje_exito(): void
