@@ -138,6 +138,14 @@ class html{
         return $html;
     }
 
+    /**
+     * Valida los datos de un input sean correctos
+     * @param string $accion Accion a verificar
+     * @param string $etiqueta
+     * @param string $seccion
+     * @param string $style
+     * @return bool|array
+     */
     public function valida_input(string $accion, string $etiqueta, string $seccion, string $style): bool|array
     {
         $seccion = trim($seccion);

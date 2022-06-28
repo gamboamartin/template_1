@@ -306,6 +306,7 @@ class directivas{
 
     /**
      * Verifica los datos de entrada de un label
+     * @version 0.35.5
      * @param string $name Nombre del input
      * @param string $place_holder Dato a mostrar dentro del input de manera inicial
      * @return bool|array

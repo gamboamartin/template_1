@@ -1,2 +1,3 @@
+<?php use config\views; ?>
 <?php include "init.php"; ?>
-<?php include "views/basics/lista.php"; ?>
+<?php include (new views())->ruta_template_base."views/basics/lista.php"; ?>
