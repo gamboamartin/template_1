@@ -141,9 +141,9 @@ class html{
     /**
      * Valida los datos de un input sean correctos
      * @param string $accion Accion a verificar
-     * @param string $etiqueta
-     * @param string $seccion
-     * @param string $style
+     * @param string $etiqueta Etiqueta a mostrar en el input
+     * @param string $seccion Seccion en ejecucion
+     * @param string $style Estilo css
      * @return bool|array
      */
     public function valida_input(string $accion, string $etiqueta, string $seccion, string $style): bool|array
