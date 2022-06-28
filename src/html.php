@@ -140,6 +140,7 @@ class html{
 
     /**
      * Valida los datos de un input sean correctos
+     * @version 0.36.5
      * @param string $accion Accion a verificar
      * @param string $etiqueta Etiqueta a mostrar en el input
      * @param string $seccion Seccion en ejecucion
