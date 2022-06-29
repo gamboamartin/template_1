@@ -2,6 +2,7 @@
 namespace tests\controllers;
 
 use gamboamartin\errores\errores;
+use gamboamartin\test\liberator;
 use gamboamartin\test\test;
 use html\html;
 use stdClass;
@@ -82,6 +83,32 @@ class htmlTest extends test {
         $this->assertEquals("<label class='control-label' for='a'>c</label>", $resultado);
 
 
+        errores::$error = false;
+    }
+
+    public function test_option(): void
+    {
+        errores::$error = false;
+        $html = new html();
+        $html = new liberator($html);
+
+        $descripcion = 'z';
+        $selected = true;
+        $value = 'a';
+        $resultado = $html->option($descripcion, $selected, $value);
+        $this->assertIsString($resultado);
+        $this->assertNotTrue(errores::$error);
+        $this->assertEquals("<option value='a' selected>z</option>", $resultado);
+
+        errores::$error = false;
+
+        $descripcion = 'z';
+        $selected = false;
+        $value = '-1';
+        $resultado = $html->option($descripcion, $selected, $value);
+        $this->assertIsString($resultado);
+        $this->assertNotTrue(errores::$error);
+        $this->assertEquals("<option value='-1' >z</option>", $resultado);
         errores::$error = false;
     }
 
