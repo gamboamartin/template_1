@@ -89,7 +89,7 @@ class html{
             return $this->error->error(mensaje: 'Error al generar label', data: $label_html);
         }
 
-        $html = $this->div_control_group_cols(cols: $cols,contenido: $contenido);
+        $html = $this->div_control_group_cols(cols: $cols,contenido: $label_html.$contenido);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al generar contenedor', data: $html);
         }
@@ -112,6 +112,13 @@ class html{
         return $select_in.$options_html.$select_fin;
     }
 
+    /**
+     * @param string $descripcion_select
+     * @param mixed $id_selected Id o valor a comparar origen de la base de valor
+     * @param string $options_html
+     * @param mixed $value
+     * @return array|string
+     */
     private function integra_options_html(string $descripcion_select, mixed $id_selected, string $options_html,
                                           mixed $value): array|string
     {
@@ -126,6 +133,14 @@ class html{
         return $options_html;
     }
 
+    /**
+     * @param int $cols
+     ** @param mixed $id_selected Id o valor a comparar origen de la base de valor
+     * @param string $label
+     * @param string $name
+     * @param array $values
+     * @return array|string
+     */
     public function select(int $cols, int $id_selected, string $label,string $name, array $values): array|string
     {
 
@@ -208,6 +223,12 @@ class html{
         return "<option value='$value' $selected_html>$descripcion</option>";
     }
 
+    /**
+     * @param string $descripcion_select
+     * @param mixed $id_selected Id o valor a comparar origen de la base de valor
+     * @param mixed $value
+     * @return array|string
+     */
     private function option_html(string $descripcion_select, mixed $id_selected, mixed $value): array|string
     {
         $value = (int)$value;
@@ -223,6 +244,11 @@ class html{
         return $option_html;
     }
 
+    /**
+     * @param mixed $id_selected Id o valor a comparar origen de la base de valor
+     * @param array $values
+     * @return array|string
+     */
     private function options(mixed $id_selected, array $values): array|string
     {
         $options_html = $this->option(descripcion: 'Selecciona una opcion',selected:  false, value: -1);
@@ -236,6 +262,12 @@ class html{
         return $options_html;
     }
 
+    /**
+     * @param mixed $id_selected Id o valor a comparar origen de la base de valor
+     * @param string $options_html
+     * @param array $values
+     * @return array|string
+     */
     private function options_html_data(mixed $id_selected, string $options_html, array $values): array|string
     {
         $options_html_ = $options_html;
@@ -250,6 +282,12 @@ class html{
         return $options_html_;
     }
 
+    /**
+     * Verifica si el elemento debe ser selected o no
+     * @param mixed $value valor del item del select
+     * @param mixed $id_selected Id o valor a comparar origen de la base de valor
+     * @return bool
+     */
     private function selected(mixed $value, mixed $id_selected): bool
     {
         $selected = false;
