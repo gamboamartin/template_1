@@ -1,2 +1,2 @@
-<?php /** @var controllers\controlador_cat_sat_tipo_persona $controlador */ ?>
+<?php /** @var base\controller\controlador_base $controlador */ ?>
 <?php echo $controlador->inputs->status; ?>

@@ -1,7 +1,4 @@
+<?php /** @var base\controller\controlador_base $controlador  viene de registros del controler/lista */ ?>
 <?php use config\views; ?>
-<?php include (new views())->ruta_templates."inputs/alta/codigo.php"; ?>
-<?php include (new views())->ruta_templates."inputs/alta/codigo_bis.php"; ?>
-<?php include (new views())->ruta_templates."inputs/alta/descripcion.php"; ?>
-<?php include (new views())->ruta_templates."inputs/alta/alias.php"; ?>
-<?php include (new views())->ruta_templates."inputs/alta/descripcion_select.php"; ?>
+<?php echo $controlador->forms_inputs_alta; ?>
 <?php include (new views())->ruta_templates.'botons/submit/alta_bd_otro.php';?>

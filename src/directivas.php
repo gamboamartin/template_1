@@ -12,6 +12,7 @@ class directivas{
     }
 
     /**
+     * Genera un boton tipo link
      * @param string $accion Accion a ejecutar
      * @param string $etiqueta Etiqueta de boton
      * @param string $name Nombre para ser aplicado a for
