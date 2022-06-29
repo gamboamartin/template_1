@@ -75,6 +75,12 @@ class html{
         return "<a role='button' href='$link' class='btn btn-$style col-sm-12'>$etiqueta</a>";
     }
 
+    /**
+     * Genera un div con un label dentro del div
+     * @param int $cols Numero de columnas css
+     * @param string $contenido Contenido a integrar dentro del div
+     * @return string
+     */
     private function div_control_group_cols(int $cols, string $contenido): string
     {
         $div_contenedor_ini = "<div class='control-group col-sm-$cols'>";
@@ -82,6 +88,14 @@ class html{
 
         return $div_contenedor_ini.$contenido.$div_contenedor_fin;
     }
+
+    /**
+     * @param int $cols Numero de columnas css
+     * @param string $contenido
+     * @param string $label
+     * @param string $name
+     * @return string
+     */
     private function div_control_group_cols_label(int $cols, string $contenido, string $label, string $name): string
     {
         $label_html = $this->label(id_css:$name,place_holder: $label);
@@ -94,7 +108,7 @@ class html{
             return $this->error->error(mensaje: 'Error al generar contenedor', data: $html);
         }
 
-        return $label_html.$html;
+        return $html;
     }
 
     private function div_controls(string $contenido): string
@@ -134,7 +148,7 @@ class html{
     }
 
     /**
-     * @param int $cols
+     * @param int $cols Numero de columnas css
      ** @param mixed $id_selected Id o valor a comparar origen de la base de valor
      * @param string $label
      * @param string $name
@@ -158,6 +172,13 @@ class html{
 
     }
 
+    /**
+     * @param int $cols Numero de columnas css
+     * @param string $label
+     * @param string $name
+     * @param string $options_html
+     * @return array|string
+     */
     private function select_html(int $cols, string $label, string $name, string $options_html): array|string
     {
         $select = $this->div_select(name: $name,options_html: $options_html);
