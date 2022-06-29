@@ -13,6 +13,7 @@ class directivas{
 
     /**
      * Genera un boton tipo link
+     * @version 0.41.5
      * @param string $accion Accion a ejecutar
      * @param string $etiqueta Etiqueta de boton
      * @param string $name Nombre para ser aplicado a for
@@ -59,17 +60,28 @@ class directivas{
     /**
      * Genera un boton de tipo link para transaccionar status
      * @param int $cols Columnas en formato css de 1 a 12
-     * @param int $registro_id
+     * @param int $registro_id Registro id a mandar transaccion
      * @param string $seccion Seccion a ejecutar
-     * @param string $status
+     * @param string $status debe ser activo inactivo
      * @return array|string
      */
     public function button_href_status(int $cols, int $registro_id, string $seccion, string $status): array|string
     {
+
+        $seccion = trim($seccion);
+        if($seccion === ''){
+            return $this->error->error(mensaje: 'Error la $seccion esta vacia', data: $seccion);
+        }
+        $status = trim($status);
+        if($status === ''){
+            return $this->error->error(mensaje: 'Error el $status esta vacio', data: $status);
+        }
+
         $style = 'danger';
         if($status === 'activo'){
             $style = 'info';
         }
+
         $html = $this->button_href(accion: 'status',etiqueta: $status,name: 'status',
             place_holder: 'Status',registro_id: $registro_id,seccion: $seccion, style: $style);
         if(errores::$error){
