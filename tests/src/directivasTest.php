@@ -27,31 +27,7 @@ class directivasTest extends test {
 
     }
 
-    /**
-     * @throws JsonException
-     */
-    #[NoReturn] public function test_button_href(): void
-    {
-        errores::$error = false;
-        $html = new directivas();
-        $html = new liberator($html);
-        $_GET['session_id'] = 1;
-        $accion = -1;
-        $registro_id = -1;
-        $seccion = 'a';
-        $etiqueta = 'a';
-        $name = 'a';
-        $place_holder = 'c';
-        $style = 'a';
 
-        $resultado = $html->button_href($accion, $etiqueta, $name, $place_holder, $registro_id, $seccion, $style);
-        $this->assertIsString($resultado);
-        $this->assertNotTrue(errores::$error);
-        $this->assertEquals("<label class='control-label' for='a'>c</label><div class='controls'><a role='button' href='index.php?seccion=a&accion=-1&registro_id=-1&session_id=1' class='btn btn-a col-sm-12'>a</a></div>", $resultado);
-
-
-        errores::$error = false;
-    }
 
     /**
      * @throws JsonException
@@ -195,25 +171,7 @@ class directivasTest extends test {
 
     }
 
-    /**
-     */
-    #[NoReturn] public function test_label_input(): void
-    {
-        errores::$error = false;
-        $html = new directivas();
-        $html = new liberator($html);
 
-        $place_holder = 'a';
-        $name = 'c';
-
-
-        $resultado = $html->label_input($name, $place_holder);
-        $this->assertIsString($resultado);
-        $this->assertNotTrue(errores::$error);
-        $this->assertEquals("<label class='control-label' for='c'>a</label>", $resultado);
-
-        errores::$error = false;
-    }
 
     /**
      * @throws JsonException
@@ -265,46 +223,7 @@ class directivasTest extends test {
         errores::$error = false;
     }
 
-    /**
-     */
-    #[NoReturn] public function test_valida_data_label(): void
-    {
-        errores::$error = false;
-        $html = new directivas();
-        $html = new liberator($html);
 
-        $place_holder = '';
-        $name = '';
-
-
-        $resultado = $html->valida_data_label($name, $place_holder);
-        $this->assertIsArray($resultado);
-        $this->assertTrue(errores::$error);
-        $this->assertStringContainsStringIgnoringCase('Error $name debe tener info', $resultado['mensaje']);
-
-        errores::$error = false;
-
-        $place_holder = '';
-        $name = 'a';
-
-
-        $resultado = $html->valida_data_label($name, $place_holder);
-        $this->assertIsArray($resultado);
-        $this->assertTrue(errores::$error);
-        $this->assertStringContainsStringIgnoringCase('Error $place_holder debe tener info', $resultado['mensaje']);
-
-        errores::$error = false;
-
-        $place_holder = 'z';
-        $name = 'a';
-
-
-        $resultado = $html->valida_data_label($name, $place_holder);
-        $this->assertIsBool($resultado);
-        $this->assertNotTrue(errores::$error);
-        $this->assertTrue($resultado);
-        errores::$error = false;
-    }
 
 
 }
