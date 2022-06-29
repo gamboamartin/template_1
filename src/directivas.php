@@ -146,6 +146,7 @@ class directivas{
     /**
      * Genera un input de tipo alias
      * @param stdClass $row_upd Registro obtenido para actualizar
+     * @version 0.45.7
      * @param bool $value_vacio Para altas en caso de que sea vacio o no existe el key
      * @return array|string
      */

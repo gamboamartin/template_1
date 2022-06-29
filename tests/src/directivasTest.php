@@ -74,6 +74,26 @@ class directivasTest extends test {
     }
 
     /**
+     * @throws JsonException
+     */
+    #[NoReturn] public function test_input_alias(): void
+    {
+        errores::$error = false;
+        $html = new directivas();
+        //$html = new liberator($html);
+        $_GET['session_id'] = 1;
+        $value_vacio = false;
+        $row_upd = new stdClass();
+
+
+        $resultado = $html->input_alias($row_upd, $value_vacio);
+        $this->assertIsString($resultado);
+        $this->assertNotTrue(errores::$error);
+        $this->assertEquals("<div class='control-group col-sm-6'><label class='control-label' for='alias'>Alias</label><div class='controls'><input type='text' name='alias' value='' class='form-control'  required id='alias' placeholder='Alias' /></div></div>", $resultado);
+        errores::$error = false;
+    }
+
+    /**
      */
     #[NoReturn] public function test_input_codigo(): void
     {
