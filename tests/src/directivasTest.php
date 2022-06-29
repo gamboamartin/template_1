@@ -62,7 +62,7 @@ class directivasTest extends test {
         $html = new directivas();
         //$html = new liberator($html);
         $_GET['session_id'] = 1;
-        $cols = -1;
+        $cols = 1;
         $registro_id = -1;
         $seccion = 'a';
         $status = 'a';
@@ -71,7 +71,28 @@ class directivasTest extends test {
         $resultado = $html->button_href_status($cols, $registro_id, $seccion, $status);
         $this->assertIsString($resultado);
         $this->assertNotTrue(errores::$error);
-        $this->assertEquals("<div class='control-group col-sm--1'><label class='control-label' for='status'>Status</label><div class='controls'><a role='button' href='index.php?seccion=a&accion=status&registro_id=-1&session_id=1' class='btn btn-danger col-sm-12'>a</a></div></div>", $resultado);
+        $this->assertEquals("<div class='control-group col-sm-1'><label class='control-label' for='status'>Status</label><div class='controls'><a role='button' href='index.php?seccion=a&accion=status&registro_id=-1&session_id=1' class='btn btn-danger col-sm-12'>a</a></div></div>", $resultado);
+
+        errores::$error = false;
+    }
+
+    /**
+     * @throws JsonException
+     */
+    #[NoReturn] public function test_div_group(): void
+    {
+        errores::$error = false;
+        $html = new directivas();
+        $html = new liberator($html);
+        $_GET['session_id'] = 1;
+        $cols = 1;
+        $html_txt = '';
+
+
+        $resultado = $html->div_group($cols, $html_txt);
+        $this->assertIsString($resultado);
+        $this->assertNotTrue(errores::$error);
+        $this->assertEquals("<div class='control-group col-sm-1'></div>", $resultado);
 
         errores::$error = false;
     }

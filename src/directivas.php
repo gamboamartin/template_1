@@ -53,7 +53,12 @@ class directivas{
             return $this->error->error(mensaje: 'Error al generar html', data: $html);
         }
 
-        return $label."<div class='controls'>$html</div>";
+        $div = $this->div_label(html: $html,label:  $label);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al integrar div', data: $div);
+        }
+
+        return $div;
 
     }
 
@@ -76,6 +81,10 @@ class directivas{
         if($status === ''){
             return $this->error->error(mensaje: 'Error el $status esta vacio', data: $status);
         }
+        $valida = $this->valida_cols(cols: $cols);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al validar cols', data: $valida);
+        }
 
         $style = 'danger';
         if($status === 'activo'){
@@ -88,7 +97,12 @@ class directivas{
             return $this->error->error(mensaje: 'Error al generar label', data: $html);
         }
 
-        return "<div class='control-group col-sm-$cols'>$html</div>";
+        $div = $this->div_group(cols: $cols,html:  $html);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al integrar div', data: $div);
+        }
+
+        return $div;
     }
 
     public function button_href_valida_persona_fisica(int $registro_id, string $valida_persona_fisica): array|string
@@ -109,6 +123,27 @@ class directivas{
     }
 
     /**
+     * Integra un div group control-group col-sm-n_cols
+     * @param int $cols Numero de columnas css
+     * @param string $html Html a integrar en contendedor
+     * @return string|array
+     * @version 0.42.5
+     */
+    private function div_group(int $cols, string $html): string|array
+    {
+        $valida = $this->valida_cols(cols: $cols);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al validar cols', data: $valida);
+        }
+        return "<div class='control-group col-sm-$cols'>$html</div>";
+    }
+
+    private function div_label(string $html, string $label): string
+    {
+        return $label."<div class='controls'>$html</div>";
+    }
+
+    /**
      * Genera un input de tipo alias
      * @param stdClass $row_upd Registro obtenido para actualizar
      * @param bool $value_vacio Para altas en caso de que sea vacio o no existe el key
@@ -121,7 +156,13 @@ class directivas{
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al generar input', data: $html);
         }
-        return "<div class='control-group col-sm-6'>$html</div>";
+
+        $div = $this->div_group(cols: 6,html:  $html);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al integrar div', data: $div);
+        }
+
+        return $div;
     }
 
     /**
@@ -147,7 +188,13 @@ class directivas{
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al generar input', data: $html);
         }
-        return "<div class='control-group col-sm-$cols'>$html</div>";
+
+        $div = $this->div_group(cols: $cols,html:  $html);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al integrar div', data: $div);
+        }
+
+        return $div;
     }
 
     /**
@@ -160,11 +207,10 @@ class directivas{
      */
     public function input_codigo_bis(int $cols, stdClass $row_upd, bool $value_vacio): array|string
     {
-        if($cols<=0){
-            return $this->error->error(mensaje: 'Error cold debe ser mayor a 0', data: $cols);
-        }
-        if($cols>=13){
-            return $this->error->error(mensaje: 'Error cold debe ser menor o igual a  12', data: $cols);
+
+        $valida = $this->valida_cols(cols: $cols);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al validar cols', data: $valida);
         }
 
         $html =$this->input_text_required(disable: false,name: 'codigo_bis',
@@ -172,8 +218,12 @@ class directivas{
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al generar input', data: $html);
         }
+        $div = $this->div_group(cols: $cols,html:  $html);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al integrar div', data: $div);
+        }
 
-        return "<div class='control-group col-sm-$cols'>$html</div>";
+        return $div;
 
     }
 
@@ -191,7 +241,13 @@ class directivas{
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al generar input', data: $html);
         }
-        return "<div class='control-group col-sm-12'>$html</div>";
+
+        $div = $this->div_group(cols: 12,html:  $html);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al integrar div', data: $div);
+        }
+
+        return $div;
 
     }
 
@@ -202,7 +258,13 @@ class directivas{
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al generar input', data: $html);
         }
-        return "<div class='control-group col-sm-6'>$html</div>";
+
+        $div = $this->div_group(cols: 6,html:  $html);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al integrar div', data: $div);
+        }
+
+        return $div;
     }
 
     public function input_id(int $cols, stdClass $row_upd, bool $value_vacio): array|string
@@ -213,7 +275,12 @@ class directivas{
             return $this->error->error(mensaje: 'Error al generar input', data: $html);
         }
 
-        return "<div class='control-group col-sm-$cols'>$html</div>";
+        $div = $this->div_group(cols: $cols,html:  $html);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al integrar div', data: $div);
+        }
+
+        return $div;
     }
 
     private function input_text(bool $disable, string $name, string $place_holder, bool $required, stdClass $row_upd,
@@ -232,7 +299,12 @@ class directivas{
         $html= $this->html->text(disabled:$disable, id_css: $name, name: $name, place_holder: $place_holder,
             required: $required, value: $row_upd->$name);
 
-        return $label."<div class='controls'>$html</div>";
+        $div = $this->div_label(html:  $html,label:$label);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al integrar div', data: $div);
+        }
+
+        return $div;
 
     }
 
@@ -267,7 +339,12 @@ class directivas{
         $html= $this->html->text(disabled:$disable, id_css: $name, name: $name, place_holder: $place_holder,
             required: true, value: $row_upd->$name);
 
-        return $label."<div class='controls'>$html</div>";
+        $div = $this->div_label(html:  $html,label:$label);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al integrar div', data: $div);
+        }
+
+        return $div;
 
     }
 
@@ -329,6 +406,17 @@ class directivas{
             }
         }
         return $alert_warning;
+    }
+
+    private function valida_cols(int $cols): bool|array
+    {
+        if($cols<=0){
+            return $this->error->error(mensaje: 'Error cold debe ser mayor a 0', data: $cols);
+        }
+        if($cols>=13){
+            return $this->error->error(mensaje: 'Error cold debe ser menor o igual a  12', data: $cols);
+        }
+        return true;
     }
 
     /**
