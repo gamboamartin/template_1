@@ -165,6 +165,13 @@ class directivas{
 
     }
 
+    /**
+     * Genera un text de tipo descripcion
+     * @version 0.40.5
+     * @param stdClass $row_upd Objeto con datos del row
+     * @param bool $value_vacio si value vacia no integra valor en el input
+     * @return array|string
+     */
     public function input_descripcion(stdClass $row_upd, bool $value_vacio): array|string
     {
         $html =$this->input_text_required(disable: false,name: 'descripcion', place_holder: 'Descripcion',
