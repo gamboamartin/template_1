@@ -252,6 +252,12 @@ class directivas{
 
     }
 
+    /**
+     * Genera un input text de descripcion_select
+     * @param stdClass $row_upd Registro obtenido para actualizar
+     * @param bool $value_vacio Para altas en caso de que sea vacio o no existe el key
+     * @return array|string
+     */
     public function input_descripcion_select(stdClass $row_upd, bool $value_vacio): array|string
     {
         $html =$this->input_text_required(disable: false,name: 'descripcion_select',
@@ -268,6 +274,12 @@ class directivas{
         return $div;
     }
 
+    /**
+     * @param int $cols Numero de columnas css
+     * @param stdClass $row_upd
+     * @param bool $value_vacio
+     * @return array|string
+     */
     public function input_id(int $cols, stdClass $row_upd, bool $value_vacio): array|string
     {
         $html =$this->input_text(disable: true,name: 'id',place_holder: 'ID',
@@ -409,6 +421,10 @@ class directivas{
         return $alert_warning;
     }
 
+    /**
+     * @param int $cols Numero de columnas css
+     * @return bool|array
+     */
     private function valida_cols(int $cols): bool|array
     {
         if($cols<=0){
