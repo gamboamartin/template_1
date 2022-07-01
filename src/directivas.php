@@ -3,12 +3,11 @@ namespace html;
 use gamboamartin\errores\errores;
 use stdClass;
 
-class directivas{
+class directivas extends \gamboamartin\template\directivas {
     private html $html;
-    private errores $error;
     public function __construct(){
+        parent::__construct();
         $this->html = new html();
-        $this->error = new errores();
     }
 
     /**
@@ -436,23 +435,4 @@ class directivas{
         return true;
     }
 
-    /**
-     * Verifica los datos de entrada de un label
-     * @version 0.35.5
-     * @param string $name Nombre del input
-     * @param string $place_holder Dato a mostrar dentro del input de manera inicial
-     * @return bool|array
-     */
-    private function valida_data_label(string $name, string $place_holder): bool|array
-    {
-        $name = trim($name);
-        if($name === ''){
-            return $this->error->error(mensaje: 'Error $name debe tener info', data: $name);
-        }
-        $place_holder = trim($place_holder);
-        if($place_holder === ''){
-            return $this->error->error(mensaje: 'Error $place_holder debe tener info', data: $place_holder);
-        }
-        return true;
-    }
 }
