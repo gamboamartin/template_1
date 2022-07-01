@@ -5,12 +5,7 @@ use config\generales;
 use gamboamartin\errores\errores;
 use stdClass;
 
-class html{
-    private errores $error;
-    public function __construct(){
-        $this->error = new errores();
-    }
-
+class html extends \gamboamartin\template\html {
     /**
      * Genera un alert html boostrap con un mensaje incluido
      * @version 0.11.0
@@ -362,36 +357,5 @@ class html{
         $html.= "id='$id_css' placeholder='$place_holder' />";
         return $html;
     }
-
-    /**
-     * Valida los datos de un input sean correctos
-     * @version 0.36.5
-     * @param string $accion Accion a verificar
-     * @param string $etiqueta Etiqueta a mostrar en el input
-     * @param string $seccion Seccion en ejecucion
-     * @param string $style Estilo css
-     * @return bool|array
-     */
-    public function valida_input(string $accion, string $etiqueta, string $seccion, string $style): bool|array
-    {
-        $seccion = trim($seccion);
-        if($seccion === ''){
-            return $this->error->error(mensaje: 'Error la $seccion esta vacia', data: $seccion);
-        }
-        $accion = trim($accion);
-        if($accion === ''){
-            return $this->error->error(mensaje: 'Error la $accion esta vacia', data: $accion);
-        }
-        $style = trim($style);
-        if($style === ''){
-            return $this->error->error(mensaje: 'Error la $style esta vacia', data: $style);
-        }
-        $etiqueta = trim($etiqueta);
-        if($etiqueta === ''){
-            return $this->error->error(mensaje: 'Error la $etiqueta esta vacia', data: $etiqueta);
-        }
-        return true;
-    }
-
 
 }

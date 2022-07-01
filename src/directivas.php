@@ -420,19 +420,5 @@ class directivas extends \gamboamartin\template\directivas {
         return $alert_warning;
     }
 
-    /**
-     * @param int $cols Numero de columnas css
-     * @return bool|array
-     */
-    private function valida_cols(int $cols): bool|array
-    {
-        if($cols<=0){
-            return $this->error->error(mensaje: 'Error cold debe ser mayor a 0', data: $cols);
-        }
-        if($cols>=13){
-            return $this->error->error(mensaje: 'Error cold debe ser menor o igual a  12', data: $cols);
-        }
-        return true;
-    }
 
 }
