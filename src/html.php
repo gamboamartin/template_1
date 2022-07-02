@@ -55,19 +55,13 @@ class html extends \gamboamartin\template\html {
                                 string $style): string|array
     {
 
-        $valida = $this->valida_input(accion: $accion,etiqueta:  $etiqueta, seccion: $seccion,style:  $style);
+        $html = parent::button_href(accion: $accion,etiqueta:  $etiqueta,registro_id:  $registro_id,
+            seccion:  $seccion, style: $style);
         if(errores::$error){
-            return $this->error->error(mensaje: 'Error al validar datos', data: $valida);
+            return $this->error->error(mensaje: 'Error al generar boton', data: $html);
         }
 
-        $session_id = (new generales())->session_id;
-
-        if($session_id === ''){
-            return $this->error->error(mensaje: 'Error la $session_id esta vacia', data: $session_id);
-        }
-
-        $link = "index.php?seccion=$seccion&accion=$accion&registro_id=$registro_id&session_id=$session_id";
-        return "<a role='button' href='$link' class='btn btn-$style col-sm-12'>$etiqueta</a>";
+        return str_replace(array('|role|', '|class|'), array("role='button'", "class='btn btn-$style col-sm-12'"), $html);
     }
 
     /**
@@ -112,6 +106,27 @@ class html extends \gamboamartin\template\html {
         $div_controls_fin = "</div>";
 
         return $div_controls_ini.$contenido.$div_controls_fin;
+    }
+
+    public function div_group(int $cols, string $html): string|array
+    {
+        $html_r = parent::div_group(cols: $cols,html:  $html);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al generar div', data: $html_r);
+        }
+
+        return str_replace(array('|class|'), array("class='control-group col-sm-$cols'"), $html_r);
+    }
+
+    public function div_label(string $html, string $label): string
+    {
+        $html = parent::div_label(html: $html,label:  $label);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al generar div', data: $html);
+        }
+        
+        return str_replace('|class|', "class='controls'", $html);
+
     }
 
     private function div_select(string $name, string $options_html): string
@@ -202,13 +217,9 @@ class html extends \gamboamartin\template\html {
      */
     public function label(string $id_css, string $place_holder): string|array
     {
-        $id_css = trim($id_css);
-        if($id_css === ''){
-            return $this->error->error(mensaje: 'Error $id_css debe tener info', data: $id_css);
-        }
-        $place_holder = trim($place_holder);
-        if($place_holder === ''){
-            return $this->error->error(mensaje: 'Error $place_holder debe tener info', data: $place_holder);
+        $r_label = parent::label(id_css:$id_css,place_holder:  $place_holder);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al generar label', data: $r_label);
         }
 
         return "<label class='control-label' for='$id_css'>$place_holder</label>";
@@ -330,32 +341,13 @@ class html extends \gamboamartin\template\html {
                          mixed $value): string|array
     {
 
-        $name = trim($name);
-        if($name === ''){
-            return $this->error->error(mensaje: 'Error name es necesario', data: $name);
-        }
-        $id_css = trim($id_css);
-        if($id_css === ''){
-            return $this->error->error(mensaje: 'Error $id_css es necesario', data: $id_css);
-        }
-        $place_holder = trim($place_holder);
-        if($place_holder === ''){
-            return $this->error->error(mensaje: 'Error $place_holder es necesario', data: $place_holder);
-        }
-
-        $disabled_html = (new params_inputs())->disabled_html(disabled:$disabled);
+        $html = parent::text(disabled:$disabled,id_css:  $id_css,name:  $name,place_holder:  $place_holder,
+            required:  $required,value:  $value);
         if(errores::$error){
-            return $this->error->error(mensaje: 'Error al generar $disabled_html', data: $disabled_html);
+            return $this->error->error(mensaje: 'Error al generar html', data: $html);
         }
 
-        $required_html = (new params_inputs())->required_html(required: $required);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al generar $required_html', data: $required_html);
-        }
-
-        $html = "<input type='text' name='$name' value='$value' class='form-control' $disabled_html $required_html ";
-        $html.= "id='$id_css' placeholder='$place_holder' />";
-        return $html;
+        return str_replace('|class|', "class='form-control'", $html);
     }
 
 }

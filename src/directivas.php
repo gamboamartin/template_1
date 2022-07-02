@@ -4,105 +4,13 @@ use gamboamartin\errores\errores;
 use stdClass;
 
 class directivas extends \gamboamartin\template\directivas {
-    private html $html;
+
     public function __construct(){
-        parent::__construct();
-        $this->html = new html();
-    }
-
-    /**
-     * Genera un boton tipo link
-     * @version 0.41.5
-     * @param string $accion Accion a ejecutar
-     * @param string $etiqueta Etiqueta de boton
-     * @param string $name Nombre para ser aplicado a for
-     * @param string $place_holder Etiqueta a mostrar
-     * @param int $registro_id Registro a mandar transaccion
-     * @param string $seccion Seccion a ejecutar
-     * @param string $style Estilo del boton info,danger,warning etc
-     * @return array|string
-     */
-    private function button_href(string $accion, string $etiqueta, string $name, string $place_holder, int $registro_id,
-                                 string $seccion, string $style): array|string
-    {
-
-        $valida = $this->valida_data_label(name: $name,place_holder:  $place_holder);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al validar datos ', data: $valida);
-        }
-
-        $valida = (new html())->valida_input(accion: $accion,etiqueta:  $etiqueta, seccion: $seccion,style:  $style);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al validar datos', data: $valida);
-        }
-
-        $label = $this->label_input(name: $name,place_holder: $place_holder);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al generar label', data: $label);
-        }
-
-        $place_holder = trim($place_holder);
-        if($place_holder === ''){
-            return $this->error->error(mensaje: 'Error $place_holder debe tener info', data: $place_holder);
-        }
-        $html= $this->html->button_href(accion: $accion,etiqueta:  $etiqueta, registro_id: $registro_id,
-            seccion:  $seccion, style: $style);
-
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al generar html', data: $html);
-        }
-
-        $div = $this->div_label(html: $html,label:  $label);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al integrar div', data: $div);
-        }
-
-        return $div;
+        $html = new html();
+        parent::__construct(html: $html);
 
     }
 
-    /**
-     * Genera un boton de tipo link para transaccionar status
-     * @param int $cols Columnas en formato css de 1 a 12
-     * @param int $registro_id Registro id a mandar transaccion
-     * @param string $seccion Seccion a ejecutar
-     * @param string $status debe ser activo inactivo
-     * @return array|string
-     */
-    public function button_href_status(int $cols, int $registro_id, string $seccion, string $status): array|string
-    {
-
-        $seccion = trim($seccion);
-        if($seccion === ''){
-            return $this->error->error(mensaje: 'Error la $seccion esta vacia', data: $seccion);
-        }
-        $status = trim($status);
-        if($status === ''){
-            return $this->error->error(mensaje: 'Error el $status esta vacio', data: $status);
-        }
-        $valida = $this->valida_cols(cols: $cols);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al validar cols', data: $valida);
-        }
-
-        $style = 'danger';
-        if($status === 'activo'){
-            $style = 'info';
-        }
-
-        $html = $this->button_href(accion: 'status',etiqueta: $status,name: 'status',
-            place_holder: 'Status',registro_id: $registro_id,seccion: $seccion, style: $style);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al generar label', data: $html);
-        }
-
-        $div = $this->div_group(cols: $cols,html:  $html);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al integrar div', data: $div);
-        }
-
-        return $div;
-    }
 
     public function button_href_valida_persona_fisica(int $registro_id, string $valida_persona_fisica): array|string
     {
@@ -121,26 +29,7 @@ class directivas extends \gamboamartin\template\directivas {
         return $html;
     }
 
-    /**
-     * Integra un div group control-group col-sm-n_cols
-     * @param int $cols Numero de columnas css
-     * @param string $html Html a integrar en contendedor
-     * @return string|array
-     * @version 0.42.5
-     */
-    private function div_group(int $cols, string $html): string|array
-    {
-        $valida = $this->valida_cols(cols: $cols);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al validar cols', data: $valida);
-        }
-        return "<div class='control-group col-sm-$cols'>$html</div>";
-    }
 
-    private function div_label(string $html, string $label): string
-    {
-        return $label."<div class='controls'>$html</div>";
-    }
 
     /**
      * Genera un input de tipo alias
@@ -157,7 +46,7 @@ class directivas extends \gamboamartin\template\directivas {
             return $this->error->error(mensaje: 'Error al generar input', data: $html);
         }
 
-        $div = $this->div_group(cols: 6,html:  $html);
+        $div = $this->html->div_group(cols: 6,html:  $html);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al integrar div', data: $div);
         }
@@ -189,7 +78,7 @@ class directivas extends \gamboamartin\template\directivas {
             return $this->error->error(mensaje: 'Error al generar input', data: $html);
         }
 
-        $div = $this->div_group(cols: $cols,html:  $html);
+        $div = $this->html->div_group(cols: $cols,html:  $html);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al integrar div', data: $div);
         }
@@ -218,7 +107,7 @@ class directivas extends \gamboamartin\template\directivas {
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al generar input', data: $html);
         }
-        $div = $this->div_group(cols: $cols,html:  $html);
+        $div = $this->html->div_group(cols: $cols,html:  $html);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al integrar div', data: $div);
         }
@@ -242,7 +131,7 @@ class directivas extends \gamboamartin\template\directivas {
             return $this->error->error(mensaje: 'Error al generar input', data: $html);
         }
 
-        $div = $this->div_group(cols: 12,html:  $html);
+        $div = $this->html->div_group(cols: 12,html:  $html);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al integrar div', data: $div);
         }
@@ -265,7 +154,7 @@ class directivas extends \gamboamartin\template\directivas {
             return $this->error->error(mensaje: 'Error al generar input', data: $html);
         }
 
-        $div = $this->div_group(cols: 6,html:  $html);
+        $div = $this->html->div_group(cols: 6,html:  $html);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al integrar div', data: $div);
         }
@@ -287,7 +176,7 @@ class directivas extends \gamboamartin\template\directivas {
             return $this->error->error(mensaje: 'Error al generar input', data: $html);
         }
 
-        $div = $this->div_group(cols: $cols,html:  $html);
+        $div = $this->html->div_group(cols: $cols,html:  $html);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al integrar div', data: $div);
         }
@@ -311,7 +200,7 @@ class directivas extends \gamboamartin\template\directivas {
         $html= $this->html->text(disabled:$disable, id_css: $name, name: $name, place_holder: $place_holder,
             required: $required, value: $row_upd->$name);
 
-        $div = $this->div_label(html:  $html,label:$label);
+        $div = $this->html->div_label(html:  $html,label:$label);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al integrar div', data: $div);
         }
@@ -351,7 +240,7 @@ class directivas extends \gamboamartin\template\directivas {
         $html= $this->html->text(disabled:$disable, id_css: $name, name: $name, place_holder: $place_holder,
             required: true, value: $row_upd->$name);
 
-        $div = $this->div_label(html:  $html,label:$label);
+        $div = $this->html->div_label(html:  $html,label:$label);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al integrar div', data: $div);
         }
@@ -359,28 +248,6 @@ class directivas extends \gamboamartin\template\directivas {
         return $div;
 
     }
-
-    /**
-     * Genera el label de in input para ser mostrado en el front
-     * @version 0.37.5
-     * @param string $name Nombre del input
-     * @param string $place_holder Etiqueta a mostrar
-     * @return array|string
-     */
-    private function label_input(string $name, string $place_holder): array|string
-    {
-        $valida = $this->valida_data_label(name: $name,place_holder:  $place_holder);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al validar datos ', data: $valida);
-        }
-
-        $label = $this->html->label(id_css: $name, place_holder: $place_holder);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al generar label', data: $label);
-        }
-        return $label;
-    }
-
 
 
     /**
