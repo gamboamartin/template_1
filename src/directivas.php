@@ -142,6 +142,7 @@ class directivas extends \gamboamartin\template\directivas {
 
     /**
      * Genera un input text de descripcion_select
+     * @version 0.51.7
      * @param stdClass $row_upd Registro obtenido para actualizar
      * @param bool $value_vacio Para altas en caso de que sea vacio o no existe el key
      * @return array|string

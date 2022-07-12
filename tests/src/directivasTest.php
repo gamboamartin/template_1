@@ -136,6 +136,27 @@ class directivasTest extends test {
         errores::$error = false;
     }
 
+    /**
+     */
+    #[NoReturn] public function test_input_descripcion_select(): void
+    {
+        errores::$error = false;
+        $html = new directivas();
+        //$html = new liberator($html);
+        $_GET['session_id'] = 1;
+
+        $row_upd = new stdClass();
+        $value_vacio = false;
+
+
+        $resultado = $html->input_descripcion_select($row_upd, $value_vacio);
+        $this->assertIsString($resultado);
+        $this->assertNotTrue(errores::$error);
+        $this->assertEquals("<div class='control-group col-sm-6'><label class='control-label' for='descripcion_select'>Descripcion Select</label><div class='controls'><input type='text' name='descripcion_select' value='' class='form-control'  required id='descripcion_select' placeholder='Descripcion Select' /></div></div>", $resultado);
+
+        errores::$error = false;
+    }
+
 
     /**
      * @throws JsonException
