@@ -29,6 +29,43 @@ class directivas extends \gamboamartin\template\directivas {
         return $html;
     }
 
+    /**
+     * @param stdClass $row_upd Registro obtenido para actualizar
+     * @param bool $disable si disabled retorna el input como disabled
+     * @param string $name Usado para identificador css name input y place holder
+     * @param string $place_holder Texto a mostrar en el input
+     * @param bool $value_vacio Para altas en caso de que sea vacio o no existe el key
+     * @return array|string
+     */
+    public function fecha_required(bool $disable, string $name, string $place_holder, stdClass $row_upd,
+                                        bool $value_vacio ): array|string
+    {
+
+        $valida = $this->valida_data_label(name: $name,place_holder:  $place_holder);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al validar datos ', data: $valida);
+        }
+
+        $label = $this->label_input(name: $name,place_holder: $place_holder);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al generar label', data: $label);
+        }
+
+        if($value_vacio || !(isset($row_upd->$name))){
+            $row_upd->$name = '';
+        }
+
+        $html= $this->html->fecha(disabled:$disable, id_css: $name, name: $name, place_holder: $place_holder,
+            required: true, value: $row_upd->$name);
+
+        $div = $this->html->div_label(html:  $html,label:$label);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al integrar div', data: $div);
+        }
+
+        return $div;
+
+    }
 
 
     /**
