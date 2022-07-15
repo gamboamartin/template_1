@@ -38,19 +38,15 @@ class directivas extends \gamboamartin\template\directivas {
             return $this->error->error(mensaje: 'Error al validar datos ', data: $valida);
         }
 
-        $label = $this->label_input(name: $name,place_holder: $place_holder);
+        $init = $this->init_text(name: $name,place_holder:  $place_holder, row_upd: $row_upd,value_vacio:  $value_vacio);
         if(errores::$error){
-            return $this->error->error(mensaje: 'Error al generar label', data: $label);
-        }
-
-        if($value_vacio || !(isset($row_upd->$name))){
-            $row_upd->$name = '';
+            return $this->error->error(mensaje: 'Error al inicializar datos', data: $init);
         }
 
         $html= $this->html->text(disabled:$disable, id_css: $name, name: $name, place_holder: $place_holder,
-            required: true, value: $row_upd->$name);
+            required: true, value: $init->row_upd->$name);
 
-        $div = $this->html->div_label(html:  $html,label:$label);
+        $div = $this->html->div_label(html:  $html,label:$init->label);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al integrar div', data: $div);
         }
@@ -296,19 +292,15 @@ class directivas extends \gamboamartin\template\directivas {
             return $this->error->error(mensaje: 'Error al validar datos ', data: $valida);
         }
 
-        $label = $this->label_input(name: $name,place_holder: $place_holder);
+        $init = $this->init_text(name: $name,place_holder:  $place_holder, row_upd: $row_upd,value_vacio:  $value_vacio);
         if(errores::$error){
-            return $this->error->error(mensaje: 'Error al generar label', data: $label);
-        }
-
-        if($value_vacio || !(isset($row_upd->$name))){
-            $row_upd->$name = '';
+            return $this->error->error(mensaje: 'Error al inicializar datos', data: $init);
         }
 
         $html= $this->html->text(disabled:$disable, id_css: $name, name: $name, place_holder: $place_holder,
-            required: true, value: $row_upd->$name);
+            required: true, value: $init->row_upd->$name);
 
-        $div = $this->html->div_label(html:  $html,label:$label);
+        $div = $this->html->div_label(html:  $html,label:$init->label);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al integrar div', data: $div);
         }
@@ -364,19 +356,16 @@ class directivas extends \gamboamartin\template\directivas {
             return $this->error->error(mensaje: 'Error al validar datos ', data: $valida);
         }
 
-        $label = $this->label_input(name: $name,place_holder: $place_holder);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al generar label', data: $label);
-        }
 
-        if($value_vacio || !(isset($row_upd->$name))){
-            $row_upd->$name = '';
+        $init = $this->init_text(name: $name,place_holder:  $place_holder, row_upd: $row_upd,value_vacio:  $value_vacio);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al inicializar datos', data: $init);
         }
 
         $html= $this->html->text(disabled:$disable, id_css: $name, name: $name, place_holder: $place_holder,
-            required: true, value: $row_upd->$name);
+            required: true, value: $init->row_upd->$name);
 
-        $div = $this->html->div_label(html:  $html,label:$label);
+        $div = $this->html->div_label(html:  $html,label:$init->label);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al integrar div', data: $div);
         }
