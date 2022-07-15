@@ -248,6 +248,16 @@ class directivas extends \gamboamartin\template\directivas {
         return $div;
     }
 
+    /**
+     * Genera un input text en html
+     * @param bool $disable
+     * @param string $name
+     * @param string $place_holder
+     * @param bool $required
+     * @param stdClass $row_upd
+     * @param bool $value_vacio
+     * @return array|string
+     */
     public function input_text(bool $disable, string $name, string $place_holder, bool $required, stdClass $row_upd,
                                 bool $value_vacio): array|string
     {
