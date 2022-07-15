@@ -47,7 +47,7 @@ class directivas extends \gamboamartin\template\directivas {
             $row_upd->$name = '';
         }
 
-        $html= $this->html->email(disabled:$disable, id_css: $name, name: $name, place_holder: $place_holder,
+        $html= $this->html->text(disabled:$disable, id_css: $name, name: $name, place_holder: $place_holder,
             required: true, value: $row_upd->$name);
 
         $div = $this->html->div_label(html:  $html,label:$label);
@@ -353,6 +353,36 @@ class directivas extends \gamboamartin\template\directivas {
             }
         }
         return $alert_warning;
+    }
+
+    public function telefono_required(bool $disable, string $name, string $place_holder, stdClass $row_upd,
+                                   bool $value_vacio ): array|string
+    {
+
+        $valida = $this->valida_data_label(name: $name,place_holder:  $place_holder);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al validar datos ', data: $valida);
+        }
+
+        $label = $this->label_input(name: $name,place_holder: $place_holder);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al generar label', data: $label);
+        }
+
+        if($value_vacio || !(isset($row_upd->$name))){
+            $row_upd->$name = '';
+        }
+
+        $html= $this->html->text(disabled:$disable, id_css: $name, name: $name, place_holder: $place_holder,
+            required: true, value: $row_upd->$name);
+
+        $div = $this->html->div_label(html:  $html,label:$label);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al integrar div', data: $div);
+        }
+
+        return $div;
+
     }
 
 
