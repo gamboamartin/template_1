@@ -100,31 +100,6 @@ class directivas extends \gamboamartin\template\directivas {
 
 
     /**
-     * Genera un input de tipo alias
-     * @param stdClass $row_upd Registro obtenido para actualizar
-     * @version 0.45.7
-     * @param bool $value_vacio Para altas en caso de que sea vacio o no existe el key
-     * @return array|string
-     */
-    public function input_alias(stdClass $row_upd, bool $value_vacio): array|string
-    {
-        $html =$this->input_text_required(disable: false,name: 'alias',
-            place_holder: 'Alias', row_upd: $row_upd, value_vacio: $value_vacio);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al generar input', data: $html);
-        }
-
-        $div = $this->html->div_group(cols: 6,html:  $html);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al integrar div', data: $div);
-        }
-
-        return $div;
-    }
-
-
-
-    /**
      * Genera un input text de descripcion_select
      * @version 0.51.7
      * @param stdClass $row_upd Registro obtenido para actualizar
