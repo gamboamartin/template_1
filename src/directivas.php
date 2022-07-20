@@ -99,28 +99,7 @@ class directivas extends \gamboamartin\template\directivas {
     }
 
 
-    /**
-     * Genera un input text de descripcion_select
-     * @version 0.51.7
-     * @param stdClass $row_upd Registro obtenido para actualizar
-     * @param bool $value_vacio Para altas en caso de que sea vacio o no existe el key
-     * @return array|string
-     */
-    public function input_descripcion_select(stdClass $row_upd, bool $value_vacio): array|string
-    {
-        $html =$this->input_text_required(disable: false,name: 'descripcion_select',
-            place_holder: 'Descripcion Select', row_upd: $row_upd, value_vacio: $value_vacio);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al generar input', data: $html);
-        }
 
-        $div = $this->html->div_group(cols: 6,html:  $html);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al integrar div', data: $div);
-        }
-
-        return $div;
-    }
 
     /**
      * @param int $cols Numero de columnas css
