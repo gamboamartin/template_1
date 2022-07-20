@@ -43,7 +43,7 @@ class directivas extends \gamboamartin\template\directivas {
             return $this->error->error(mensaje: 'Error al inicializar datos', data: $init);
         }
 
-        $html= $this->html->text(disabled:$disable, id_css: $name, name: $name, place_holder: $place_holder,
+        $html= $this->html->email(disabled:$disable, id_css: $name, name: $name, place_holder: $place_holder,
             required: true, value: $init->row_upd->$name);
 
         $div = $this->html->div_label(html:  $html,label:$init->label);
