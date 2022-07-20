@@ -3,20 +3,7 @@ namespace html;
 use gamboamartin\errores\errores;
 
 class html extends \gamboamartin\template\html {
-    /**
-     * Genera un alert html boostrap con un mensaje incluido
-     * @version 0.11.0
-     * @param string $mensaje Mensaje a mostrar
-     * @return string|array Resultado en un html
-     */
-    public function alert_success(string $mensaje): string|array
-    {
-        $mensaje = trim($mensaje);
-        if($mensaje === ''){
-            return $this->error->error(mensaje: 'Error mensaje esta vacio', data: $mensaje);
-        }
-        return "<div class='alert alert-success' role='alert' ><strong>Muy bien!</strong> $mensaje.</div>";
-    }
+
 
     /**
      * Genera un alert de tipo warning
