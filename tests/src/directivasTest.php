@@ -6,6 +6,7 @@ use gamboamartin\errores\errores;
 use gamboamartin\test\liberator;
 use gamboamartin\test\test;
 use html\directivas;
+use html\html;
 use JetBrains\PhpStorm\NoReturn;
 use JsonException;
 
@@ -35,7 +36,8 @@ class directivasTest extends test {
     #[NoReturn] public function test_button_href_status(): void
     {
         errores::$error = false;
-        $html = new directivas();
+        $html_ = new html();
+        $html = new directivas($html_);
         //$html = new liberator($html);
         $_GET['session_id'] = 1;
         $cols = 1;
@@ -61,7 +63,8 @@ class directivasTest extends test {
     #[NoReturn] public function test_input_alias(): void
     {
         errores::$error = false;
-        $html = new directivas();
+        $html_ = new html();
+        $html = new directivas($html_);
         //$html = new liberator($html);
         $_GET['session_id'] = 1;
         $value_vacio = false;
@@ -80,7 +83,8 @@ class directivasTest extends test {
     #[NoReturn] public function test_input_codigo(): void
     {
         errores::$error = false;
-        $html = new directivas();
+        $html_ = new html();
+        $html = new directivas($html_);
         //$html = new liberator($html);
         $_GET['session_id'] = 1;
         $cols = 1;
@@ -101,7 +105,8 @@ class directivasTest extends test {
     #[NoReturn] public function test_input_codigo_bis(): void
     {
         errores::$error = false;
-        $html = new directivas();
+        $html_ = new html();
+        $html = new directivas($html_);
         //$html = new liberator($html);
         $_GET['session_id'] = 1;
         $cols = 1;
@@ -123,8 +128,8 @@ class directivasTest extends test {
     #[NoReturn] public function test_input_descripcion(): void
     {
         errores::$error = false;
-        $html = new directivas();
-        //$html = new liberator($html);
+        $html_ = new html();
+        $html = new directivas($html_);
 
         $row_upd = new stdClass();
         $value_vacio = true;
@@ -141,7 +146,8 @@ class directivasTest extends test {
     #[NoReturn] public function test_input_descripcion_select(): void
     {
         errores::$error = false;
-        $html = new directivas();
+        $html_ = new html();
+        $html = new directivas($html_);
         //$html = new liberator($html);
         $_GET['session_id'] = 1;
 
@@ -164,7 +170,8 @@ class directivasTest extends test {
     #[NoReturn] public function test_input_text_required(): void
     {
         errores::$error = false;
-        $html = new directivas();
+        $html_ = new html();
+        $html = new directivas($html_);
         $html = new liberator($html);
 
         $disable = false;
@@ -202,7 +209,8 @@ class directivasTest extends test {
     #[NoReturn] public function test_mensaje_exito(): void
     {
         errores::$error = false;
-        $html = new directivas();
+        $html_ = new html();
+        $html = new directivas($html_);
 
         $controler = new controlador_adm_seccion(link: $this->link,paths_conf: $this->paths_conf);
 
@@ -213,7 +221,8 @@ class directivasTest extends test {
         $this->assertEquals("", $resultado);
 
         errores::$error = false;
-        $html = new directivas();
+        $html_ = new html();
+        $html = new directivas($html_);
         $_SESSION['exito'][]['mensaje'] = 'hola';
         $controler = new controlador_adm_seccion(link: $this->link,paths_conf: $this->paths_conf);
         $resultado = $html->mensaje_exito($controler->mensaje_exito);
@@ -230,7 +239,8 @@ class directivasTest extends test {
     #[NoReturn] public function test_mensaje_warning(): void
     {
         errores::$error = false;
-        $html = new directivas();
+        $html_ = new html();
+        $html = new directivas($html_);
         $_GET['session_id'] = 1;
         $_GET['seccion'] = 'adm_seccion';
         $_GET['accion'] = 'lista';

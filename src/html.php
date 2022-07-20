@@ -1,9 +1,6 @@
 <?php
 namespace html;
-use base\frontend\params_inputs;
-use config\generales;
 use gamboamartin\errores\errores;
-use stdClass;
 
 class html extends \gamboamartin\template\html {
     /**
