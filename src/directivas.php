@@ -13,8 +13,8 @@ class directivas extends \gamboamartin\template\directivas {
 
     /**
      * Funcion que genera boton valida
-     * @param int $registro_id
-     * @param string $valida_persona_fisica
+     * @param int $registro_id Registro identificador
+     * @param string $valida_persona_fisica Verifica bool si activo
      * @return array|string
      */
     public function button_href_valida_persona_fisica(int $registro_id, string $valida_persona_fisica): array|string
@@ -124,35 +124,7 @@ class directivas extends \gamboamartin\template\directivas {
 
 
 
-    /**
-     * Genera un input de tipo codigo bis
-     * @version 0.32.5
-     * @param int $cols Numero de columnas boostrap
-     * @param stdClass $row_upd Registro obtenido para actualizar
-     * @param bool $value_vacio Para altas en caso de que sea vacio o no existe el key
-     * @return array|string
-     */
-    public function input_codigo_bis(int $cols, stdClass $row_upd, bool $value_vacio): array|string
-    {
 
-        $valida = $this->valida_cols(cols: $cols);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al validar cols', data: $valida);
-        }
-
-        $html =$this->input_text_required(disable: false,name: 'codigo_bis',
-            place_holder: 'Codigo BIS', row_upd: $row_upd, value_vacio: $value_vacio);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al generar input', data: $html);
-        }
-        $div = $this->html->div_group(cols: $cols,html:  $html);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al integrar div', data: $div);
-        }
-
-        return $div;
-
-    }
 
     /**
      * Genera un text de tipo descripcion
