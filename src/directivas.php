@@ -29,32 +29,7 @@ class directivas extends \gamboamartin\template\directivas {
         return $html;
     }
 
-
-
-    /**
-     * @param int $cols Numero de columnas css
-     * @param stdClass $row_upd
-     * @param bool $value_vacio
-     * @return array|string
-     */
-    public function input_id(int $cols, stdClass $row_upd, bool $value_vacio): array|string
-    {
-        $html =$this->input_text(disable: true,name: 'id',place_holder: 'ID',
-            required: false, row_upd: $row_upd, value_vacio: $value_vacio);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al generar input', data: $html);
-        }
-
-        $div = $this->html->div_group(cols: $cols,html:  $html);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al integrar div', data: $div);
-        }
-
-        return $div;
-    }
-
-
-
+    
     /**
      * Genera un mensaje de exito
      * @param string $mensaje_exito
