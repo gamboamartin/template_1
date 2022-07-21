@@ -1,5 +1,5 @@
 <?php
-namespace html;
+namespace gamboamartin\template_1;
 use config\generales;
 use gamboamartin\errores\errores;
 use gamboamartin\validacion\validacion;

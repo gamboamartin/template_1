@@ -1,5 +1,5 @@
 <?php
-namespace html;
+namespace gamboamartin\template_1;
 use gamboamartin\errores\errores;
 
 class html extends \gamboamartin\template\html {
@@ -47,10 +47,6 @@ class html extends \gamboamartin\template\html {
 
         return str_replace(array('|role|', '|class|'), array("role='button'", "class='btn btn-$style col-sm-12'"), $html);
     }
-
-
-
-
 
 
 

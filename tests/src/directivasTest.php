@@ -3,10 +3,12 @@ namespace tests\controllers;
 
 use gamboamartin\controllers\controlador_adm_seccion;
 use gamboamartin\errores\errores;
+use gamboamartin\template_1\directivas;
+use gamboamartin\template_1\html;
 use gamboamartin\test\liberator;
 use gamboamartin\test\test;
-use html\directivas;
-use html\html;
+
+
 use JetBrains\PhpStorm\NoReturn;
 use JsonException;
 

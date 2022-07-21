@@ -2,9 +2,9 @@
 namespace tests\controllers;
 
 use gamboamartin\errores\errores;
+use gamboamartin\template_1\nav;
 use gamboamartin\test\liberator;
 use gamboamartin\test\test;
-use html\nav;
 use JetBrains\PhpStorm\NoReturn;
 
 use stdClass;

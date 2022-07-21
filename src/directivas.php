@@ -1,5 +1,5 @@
 <?php
-namespace html;
+namespace gamboamartin\template_1;
 use gamboamartin\errores\errores;
 use stdClass;
 
@@ -29,7 +29,7 @@ class directivas extends \gamboamartin\template\directivas {
         return $html;
     }
 
-    
+
     /**
      * Genera un mensaje de exito
      * @param string $mensaje_exito
