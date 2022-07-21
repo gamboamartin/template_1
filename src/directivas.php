@@ -30,24 +30,7 @@ class directivas extends \gamboamartin\template\directivas {
     }
 
 
-    /**
-     * Genera un mensaje de exito
-     * @param string $mensaje_exito
-     * @return array|string
-     * @version 0.13.0
-     */
-    public function mensaje_exito(string $mensaje_exito): array|string
-    {
-        $alert_exito = '';
-        if($mensaje_exito!==''){
-            $alert_exito = $this->html->alert_success(mensaje: $mensaje_exito);
-            if(errores::$error){
-                return $this->error->error(mensaje: 'Error al generar alerta', data: $alert_exito);
-            }
 
-        }
-        return $alert_exito;
-    }
 
     /**
      * Genera un mensaje de tipo warning
