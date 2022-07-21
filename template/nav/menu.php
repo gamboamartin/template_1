@@ -1,7 +1,8 @@
 <?php
 /** @var stdClass $links_menu viene de links  */
 use config\views;
-use html\nav;
+use gamboamartin\template_1\nav;
+
 ?>
 <div class="pull-left menu">
     <?php include (new views())->ruta_templates.'nav/_menu_responsive.php'?>
