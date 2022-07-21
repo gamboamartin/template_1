@@ -32,23 +32,7 @@ class directivas extends \gamboamartin\template\directivas {
 
 
 
-    /**
-     * Genera un mensaje de tipo warning
-     * @param string $mensaje_warning
-     * @return array|string
-     * @version 0.19.1
-     */
-    public function mensaje_warning( string $mensaje_warning): array|string
-    {
-        $alert_warning = '';
-        if($mensaje_warning!==''){
-            $alert_warning = $this->html->alert_warning(mensaje: $mensaje_warning);
-            if(errores::$error){
-                return $this->error->error(mensaje: 'Error al generar alerta', data: $alert_warning);
-            }
-        }
-        return $alert_warning;
-    }
+
 
     public function telefono_required(bool $disable, string $name, string $place_holder, stdClass $row_upd,
                                    bool $value_vacio ): array|string

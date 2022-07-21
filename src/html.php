@@ -5,20 +5,7 @@ use gamboamartin\errores\errores;
 class html extends \gamboamartin\template\html {
 
 
-    /**
-     * Genera un alert de tipo warning
-     * @version 1.17.1
-     * @param string $mensaje Mensaje a mostrar en el warning
-     * @return string|array
-     */
-    public function alert_warning(string $mensaje): string|array
-    {
-        $mensaje = trim($mensaje);
-        if($mensaje === ''){
-            return $this->error->error(mensaje: 'Error mensaje esta vacio', data: $mensaje);
-        }
-        return "<div class='alert alert-warning' role='alert' ><strong>Advertencia!</strong> $mensaje.</div>";
-    }
+
 
     public function button(string $etiqueta): string
     {
