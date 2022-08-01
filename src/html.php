@@ -94,11 +94,7 @@ class html extends \gamboamartin\template\html {
         return str_replace('|class|', "class='form-control'", $html);
     }
 
-
-
-
-
-
+    
 
     /**
      * Genera un label html
