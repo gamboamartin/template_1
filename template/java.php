@@ -38,4 +38,4 @@ use config\views; ?>
 <script src="<?php echo (new views())->url_assets; ?>js/dpejes_custom.js"></script>
 <script src="<?php echo (new views())->url_assets; ?>js/dpejes_custom.js"></script>
 <script src="<?php echo (new views())->url_assets; ?>js/facebook.js" type="text/javascript"></script>
-<script src="<?php echo (new generales())->url_base; ?>vendor/gamboa.martin/js_base/src/base.js" type="text/javascript"></script>
+<script src="<?php echo (new views())->url_js; ?>base.js" type="text/javascript"></script>
