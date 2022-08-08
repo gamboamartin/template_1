@@ -98,7 +98,7 @@ class htmlTest extends test {
         $resultado = $html->option($descripcion, $selected, $value);
         $this->assertIsString($resultado);
         $this->assertNotTrue(errores::$error);
-        $this->assertEquals("<option value='a' selected>z</option>", $resultado);
+        $this->assertEquals("<option value='a' selected >z</option>", $resultado);
 
         errores::$error = false;
 
@@ -108,7 +108,7 @@ class htmlTest extends test {
         $resultado = $html->option($descripcion, $selected, $value);
         $this->assertIsString($resultado);
         $this->assertNotTrue(errores::$error);
-        $this->assertEquals("<option value='-1' >z</option>", $resultado);
+        $this->assertEquals("<option value=''  >z</option>", $resultado);
         errores::$error = false;
     }
 
