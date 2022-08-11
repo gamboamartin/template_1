@@ -5,8 +5,11 @@ use gamboamartin\errores\errores;
 class html extends \gamboamartin\template\html {
 
 
-
-
+    /**
+     * Genera un boton basico con estilo boostrap
+     * @param string $etiqueta Etiqueta del boton
+     * @return string
+     */
     public function button(string $etiqueta): string
     {
         return "<button type='button' class='btn btn-info col-sm-12'>$etiqueta</button>";
@@ -14,20 +17,21 @@ class html extends \gamboamartin\template\html {
 
     /**
      * Funcion que genera un boton de tipo link con href
-     * @version 0.32.3
      * @param string $accion Accion a ejecutar
      * @param string $etiqueta Etiqueta de boton
      * @param int $registro_id Registro a mandar transaccion
      * @param string $seccion Seccion a ejecutar
      * @param string $style Estilo del boton info,danger,warning etc
+     * @param array $params Parametros extra para incrustar por get
      * @return string|array
+     * @version 0.32.3
      */
     public function button_href(string $accion, string $etiqueta, int $registro_id, string $seccion,
-                                string $style): string|array
+                                string $style, array $params = array()): string|array
     {
 
         $html = parent::button_href(accion: $accion,etiqueta:  $etiqueta,registro_id:  $registro_id,
-            seccion:  $seccion, style: $style);
+            seccion:  $seccion, style: $style, params: $params);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al generar boton', data: $html);
         }
