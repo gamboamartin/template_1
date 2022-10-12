@@ -29,3 +29,4 @@ use config\views; ?>
 <!-- Inicio template proyecto local  -->
 <link rel="stylesheet" href="<?php echo (new views())->url_assets; ?>css/proyecto.css" />
 <!-- End template proyecto local   -->
+<link rel="stylesheet" href="<?php echo (new views())->url_assets; ?>css/datatables.min.css" />
