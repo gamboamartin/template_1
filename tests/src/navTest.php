@@ -75,6 +75,7 @@ class navTest extends test {
         $links->cat_sat_tipo_persona->lista = 'z';
 
         $resultado = $nav->lis_menu_principal($links);
+
         $this->assertIsString($resultado);
         $this->assertNotTrue(errores::$error);
         $this->assertEquals("<li class='nav-item'><a class='nav-link' href='z' role='button'>Cat Sat Tipo Persona</a></li>", $resultado);
