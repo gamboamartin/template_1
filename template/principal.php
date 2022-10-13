@@ -6,6 +6,8 @@ use gamboamartin\system\links_menu;
 $path_base_template = (new views())->ruta_templates;
 $links_menu = (new links_menu(registro_id: -1))->links;
 
+/** @var base\controller\ $controlador */
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -36,5 +38,8 @@ $links_menu = (new links_menu(registro_id: -1))->links;
 
     <?php include $path_base_template.'java.php'; ?>
     <?php echo $data->js_view; ?>
+    <script>
+        datatable(<?= json_encode($controlador->datatable["columns"]); ?>, <?= json_encode($controlador->datatable["columnDefs"]); ?>);
+    </script>
 </body>
 </html>
