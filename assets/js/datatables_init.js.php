@@ -23,7 +23,6 @@ datatable = function (columns, columnDefs) {
         columns: _columns,
         columnDefs: _columnDefs
     });
-
 };
 
 asigna_columns = function (columns) {
@@ -40,34 +39,29 @@ asigna_columnDefs = function (columnDefs) {
     let salida = []
 
     columnDefs.forEach( function(object, indice, array) {
+
         if(!("visible" in object)){
             object.data = null;
             object.render = function (data, type, row)
             {
                 let expresion = "";
 
-                object.rendered.forEach(function (e) {
-                    let key = e.index
+                if(("rendered" in object)){
+                    object.rendered.forEach(function (e) {
+                        let key = e.index
 
-                    if(("type" in e) && e.type === "text"){
-                        expresion += row[key] + " "
-                    } else if (("type" in e) && e.type === "button"){
-                        let button = `<a href='${row[key]}' class='btn ${e.class}' style='margin-right: 10px'>${e.text}</a>`;
-                        expresion += button
-                    }
-                });
+                        if(("type" in object) && object.type === "text"){
+                            expresion += row[key] + " "
+                        } else if (("type" in object) && object.type === "button"){
+                            let button = `<a href='${row[key]}' class='btn ${e.class}' style='margin-right: 10px'>${e.text}</a>`;
+                            expresion += button
+                        }
+                    });
+                }
                 return expresion;
             }
         }
         salida.push(object);
     });
-
     return salida;
 };
-
-
-
-
-
-
-
