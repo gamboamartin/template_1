@@ -12,7 +12,14 @@ datatable = function (columns, columnDefs) {
     var table = $('.datatable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: {"url": url_data_table},
+        ajax: {
+            "url": url_data_table,
+            "error": function(jqXHR, textStatus, errorThrown)
+            {
+                let response = jqXHR.responseText;
+                document.body.innerHTML = response.replace('[]', '')
+            }
+        },
         columns: _columns,
         columnDefs: _columnDefs
     });
