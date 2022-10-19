@@ -6,7 +6,6 @@ url_data_table = url_data_table.replace(accion,"get_data");
 
 datatable = function (columns, columnDefs) {
 
-    let _columns = asigna_columns(columns);
     let _columnDefs = asigna_columnDefs(columnDefs);
 
     var table = $('.datatable').DataTable({
@@ -21,7 +20,7 @@ datatable = function (columns, columnDefs) {
                 document.body.innerHTML = response.replace('[]', '')
             }
         },
-        columns: _columns,
+        columns: columns,
         columnDefs: _columnDefs
     });
 };
@@ -41,27 +40,25 @@ asigna_columnDefs = function (columnDefs) {
 
     columnDefs.forEach( function(object, indice, array) {
 
-        if(!("visible" in object)){
-            object.data = null;
-            object.render = function (data, type, row)
-            {
-                let expresion = "";
+        object.render = function (data, type, row){
+            let expresion = "";
+            let objects = object.rendered
 
-                if(("rendered" in object)){
-                    object.rendered.forEach(function (e) {
-                        let key = e.index
-
-                        if(("type" in object) && object.type === "text"){
-                            expresion += row[key] + " "
-                        } else if (("type" in object) && object.type === "button"){
-                            let button = `<a href='${row[key]}' class='btn ${e.class}' style='margin-right: 10px'>${e.text}</a>`;
-                            expresion += button
-                        }
-                    });
-                }
-                return expresion;
+            if (object.type === "text"){
+                objects.forEach(function (e) {
+                    expresion += row[e] + " "
+                })
+            } else if (object.type === "button"){
+                objects.forEach(function (e) {
+                    console.log(row[e])
+                    let button = `<a href='${row[e]}' class='btn btn-info' style='margin-right: 10px'>${e}</a>`;
+                    expresion += button
+                })
             }
+            return expresion;
         }
+
+
         salida.push(object);
     });
     return salida;
