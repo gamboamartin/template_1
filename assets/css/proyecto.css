@@ -11,15 +11,14 @@
 }
 
 .dataTables_filter input{
-    border-bottom: 1px solid gray;
-    box-shadow: 0 4px 3px -3px gray;
-    border-radius: 0;
-    height: 34px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    height: 30px;
 }
 
 .dataTables_filter input:focus{
-    border-bottom: 1px solid gray;
-    box-shadow: 0 4px 3px -3px gray;
-    border-radius: 0;
+    border: 1px solid gray;
+    border-radius: 5px;
+    height: 30px;
 }
 
