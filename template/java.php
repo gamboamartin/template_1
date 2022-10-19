@@ -41,3 +41,6 @@ use config\views; ?>
 <script src="<?php echo (new views())->url_js; ?>base.js" type="text/javascript"></script>
 <script src="<?php echo (new views())->url_assets; ?>js/datatables.min.js"></script>
 <script src="<?php echo (new views())->url_assets; ?>js/datatables_init.js.php"></script>
+<script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
