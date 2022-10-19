@@ -1,6 +1,6 @@
 <?php use config\views; ?>
 <?php /** @var base\controller\ $controlador  viene de registros del controler/lista */ ?>
-<table id="footable" class="datatable table table-striped" >
+<table class="datatable table table-striped" >
     <thead>
     <tr>
         <?php foreach ($controlador->datatable["titulos"] as $item) : ?>
