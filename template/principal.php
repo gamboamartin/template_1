@@ -38,9 +38,11 @@ $links_menu = (new links_menu(registro_id: -1))->links;
 
     <?php include $path_base_template.'java.php'; ?>
     <?php echo $data->js_view; ?>
-    <?php foreach ($controlador->datatables as $datatable) {
-        $objeto = json_encode($datatable);
-        print_r("<script> datatable($objeto.identificador, $objeto.columns, $objeto.columnDefs) </script>");
-    } ?>
+    <?php if (isset($controlador->datatables)):?>
+        <?php foreach ($controlador->datatables as $datatable) {
+            $objeto = json_encode($datatable);
+            print_r("<script> datatable($objeto.identificador, $objeto.columns, $objeto.columnDefs) </script>");
+        } ?>
+    <?php endif;?>
 </body>
 </html>
