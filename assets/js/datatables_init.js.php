@@ -1,14 +1,20 @@
 let url_data_table = $(location).attr('href')+"&ws=1" ;
 
-let accion = getParameterByName('accion');
+datatable = function (identificador, columns, columnDefs) {
 
-url_data_table = url_data_table.replace(accion,"get_data");
+    let seccion = getParameterByName('seccion');
+    let accion = getParameterByName('accion');
 
-datatable = function (columns, columnDefs) {
+    url_data_table = url_data_table.replace(accion,"get_data");
+
+    if (identificador !== ".datatable"){
+        let _seccion = identificador.slice(1)
+        url_data_table = url_data_table.replace(seccion,_seccion);
+    }
 
     let _columnDefs = asigna_columnDefs(columnDefs);
 
-    var table = $('.datatable').DataTable({
+    var table = $(identificador).DataTable({
         processing: true,
         serverSide: true,
         responsive: true,
@@ -50,15 +56,12 @@ asigna_columnDefs = function (columnDefs) {
                 })
             } else if (object.type === "button"){
                 objects.forEach(function (e) {
-                    console.log(row[e])
                     let button = `<a href='${row[e]}' class='btn btn-info' style='margin-right: 10px'>${e}</a>`;
                     expresion += button
                 })
             }
             return expresion;
         }
-
-
         salida.push(object);
     });
     return salida;
