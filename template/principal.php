@@ -41,7 +41,7 @@ $links_menu = (new links_menu(registro_id: -1))->links;
     <?php if (isset($controlador->datatables)):?>
         <?php foreach ($controlador->datatables as $datatable) {
             $objeto = json_encode($datatable);
-            print_r("<script> datatable($objeto.identificador, $objeto.columns, $objeto.columnDefs) </script>");
+            print_r("<script> datatable($objeto.identificador, $objeto.columns, $objeto.columnDefs, $objeto.data) </script>");
         } ?>
     <?php endif;?>
 </body>
