@@ -1,12 +1,13 @@
 <?php /** @var stdClass $data */
+/** @var base\controller\ $controlador */
 use config\views;
 use gamboamartin\system\links_menu;
 
 
 $path_base_template = (new views())->ruta_templates;
-$links_menu = (new links_menu(registro_id: -1))->links;
+$links_menu = (new links_menu(link:$controlador->link, registro_id: -1))->links;
 
-/** @var base\controller\ $controlador */
+
 
 ?>
 <!DOCTYPE html>
