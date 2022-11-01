@@ -56,22 +56,27 @@ class nav{
 
     /**
      * Genera las lista de menu principal
-     * @version 0.11.0
      * @param stdClass $links Objeto con link para frontend
+     * @param array $secciones
      * @return array|string
+     * @version 0.11.0
      */
-    public function lis_menu_principal(stdClass $links): array|string
+    public function lis_menu_principal(stdClass $links, array $secciones): array|string
     {
-        $secciones = (new generales())->secciones;
+
         $lis = '';
         foreach($secciones as $seccion){
 
-            $valida = $this->valida_links(links: $links,seccion: $seccion);
+            if(!is_array($seccion)){
+                return $this->error->error(mensaje: 'Error seccion debe ser un array', data: $seccion);
+            }
+
+            $valida = $this->valida_links(links: $links,seccion: $seccion['adm_seccion_descripcion']);
             if(errores::$error){
                 return $this->error->error(mensaje: 'Error al validar datos', data: $valida);
             }
 
-            $li = $this->li_menu_principal_lista(links: $links,seccion: $seccion);
+            $li = $this->li_menu_principal_lista(links: $links,seccion: $seccion['adm_seccion_descripcion']);
             if(errores::$error){
                 return $this->error->error(mensaje: 'Error al generar li', data: $li);
             }

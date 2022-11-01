@@ -74,7 +74,7 @@ class navTest extends test {
         $links->cat_sat_tipo_persona = new stdClass();
         $links->cat_sat_tipo_persona->lista = 'z';
 
-        $resultado = $nav->lis_menu_principal($links);
+        $resultado = $nav->lis_menu_principal($links, array(0=>array('adm_seccion_descripcion'=>'cat_sat_tipo_persona')));
 
         $this->assertIsString($resultado);
         $this->assertNotTrue(errores::$error);
