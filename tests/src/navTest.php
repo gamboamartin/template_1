@@ -103,9 +103,9 @@ class navTest extends test {
         $seccion = 'd';
 
         $resultado = $nav->valida_links($links, $seccion);
-        $this->assertIsArray($resultado);
-        $this->assertTrue(errores::$error);
-        $this->assertStringContainsStringIgnoringCase("Error al validar links", $resultado['mensaje']);
+        $this->assertIsBool($resultado);
+        $this->assertNotTrue(errores::$error);
+
 
         errores::$error = false;
         $links = new stdClass();
@@ -113,9 +113,9 @@ class navTest extends test {
         $links->d = new stdClass();
         $resultado = $nav->valida_links($links, $seccion);
 
-        $this->assertIsArray($resultado);
-        $this->assertTrue(errores::$error);
-        $this->assertStringContainsStringIgnoringCase("Error al validar links->d", $resultado['mensaje']);
+        $this->assertIsBool($resultado);
+        $this->assertNotTrue(errores::$error);
+
 
         errores::$error = false;
         $links = new stdClass();

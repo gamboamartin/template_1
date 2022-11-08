@@ -100,16 +100,11 @@ class nav{
             return $this->error->error(mensaje: 'Error la seccion esta vacia', data: $seccion);
         }
 
-        $keys = array($seccion);
-        $valida = (new validacion())->valida_existencia_keys(keys: $keys,registro:  $links);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al validar links', data: $valida);
+        if(!isset($links->$seccion)) {
+            $links->$seccion = new stdClass();
         }
-
-        $keys = array('lista');
-        $valida = (new validacion())->valida_existencia_keys(keys: $keys,registro:  $links->$seccion);
-        if(errores::$error){
-            return $this->error->error(mensaje: 'Error al validar links->'.$seccion, data: $valida);
+        if(!isset($links->$seccion->lista)) {
+            $links->$seccion->lista = '';
         }
 
         return true;
