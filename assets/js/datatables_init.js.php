@@ -57,8 +57,13 @@ asigna_columnDefs = function (columnDefs) {
                 })
             } else if (object.type === "button"){
                 objects.forEach(function (e) {
-                    let button = `<a href='${row[e]}' class='btn btn-info' style='margin-right: 10px'>${e}</a>`;
+
+                    console.log(row[e]);
+                    let button = `${row[e]}`;
                     expresion += button
+
+                    //let button = `<a href='${row[e]}' class='btn btn-info' style='margin-right: 10px'>${e}</a>`;
+                    //expresion += button
                 })
             }
             return expresion;
