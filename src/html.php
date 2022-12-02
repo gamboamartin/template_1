@@ -117,6 +117,19 @@ class html extends \gamboamartin\template\html {
         return "<label class='control-label' for='$id_css'>$place_holder</label>";
     }
 
+    public function monto(bool $disabled, string $id_css, string $name, string $place_holder, bool $required,
+                          mixed $value): string|array
+    {
+
+        $html = parent::monto(disabled:$disabled,id_css:  $id_css,name:  $name,place_holder:  $place_holder,
+            required:  $required,value:  $value);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al generar html', data: $html);
+        }
+
+        return str_replace('|class|', "class='form-control'", $html);
+    }
+
 
     /**
      * Genera um input text basado en los parametros enviados
