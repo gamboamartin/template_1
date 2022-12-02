@@ -8,10 +8,15 @@ class html extends \gamboamartin\template\html {
     /**
      * Genera un boton basico con estilo boostrap
      * @param string $etiqueta Etiqueta del boton
-     * @return string
+     * @return string|array
+     * @version 0.98.20
      */
-    public function button(string $etiqueta): string
+    public function button(string $etiqueta): string|array
     {
+        $etiqueta = trim($etiqueta);
+        if($etiqueta === ''){
+            return $this->error->error(mensaje: 'Error etiqueta esta vacia', data: $etiqueta);
+        }
         return "<button type='button' class='btn btn-info col-sm-12'>$etiqueta</button>";
     }
 
