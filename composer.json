@@ -18,7 +18,7 @@
         }
     },
     "require": {
-        "gamboa.martin/administrador": "^2.0.0",
+        "gamboa.martin/administrador": "^3.0.0",
       "gamboa.martin/base_modelos": "dev-main",
       "gamboa.martin/calculo": "dev-main",
       "gamboa.martin/compresor": "dev-main",
