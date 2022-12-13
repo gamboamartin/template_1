@@ -28,7 +28,7 @@
         "gamboa.martin/errores": "^1.0.0",
         "gamboa.martin/test": "dev-main",
         "gamboa.martin/system": "dev-main",
-        "gamboa.martin/template": "dev-main",
+        "gamboa.martin/template": "^1.0.0",
         "gamboa.martin/js_base": "dev-master"
     },
     "require-dev": {

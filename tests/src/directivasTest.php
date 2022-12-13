@@ -206,7 +206,6 @@ class directivasTest extends test {
 
 
     /**
-     * @throws JsonException
      */
     #[NoReturn] public function test_mensaje_exito(): void
     {
