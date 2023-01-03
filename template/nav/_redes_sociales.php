@@ -3,7 +3,7 @@
 ?>
 <div  class="top-bar color-primary">
 <div class="container clearfix">
-    <div class="pull-right">
+    <div class="pull-right" style="display: flex; width: 100%">
         <ul class="social-nav clearfix">
             <?php echo $controlador->menu_header; ?>
         </ul>
