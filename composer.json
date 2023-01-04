@@ -27,7 +27,7 @@
       "gamboa.martin/plugins": "^1.0.0",
         "gamboa.martin/errores": "^1.0.0",
         "gamboa.martin/test": "^1.0.0",
-        "gamboa.martin/system": "^3.0.0",
+        "gamboa.martin/system": "^4.0.0",
         "gamboa.martin/template": "^3.0.0",
         "gamboa.martin/js_base": "^1.0.0"
     },
