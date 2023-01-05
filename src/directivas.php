@@ -38,6 +38,7 @@ class directivas extends \gamboamartin\template\directivas {
     }
 
     /**
+     * Genera un input de tip email requerido
      * @param bool $disable
      * @param string $name
      * @param string $place_holder
@@ -51,6 +52,7 @@ class directivas extends \gamboamartin\template\directivas {
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al general email ', data: $email);
         }
+        return $email;
 
     }
 
