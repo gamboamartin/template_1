@@ -1,5 +1,6 @@
 <?php
 namespace gamboamartin\template_1;
+use config\generales;
 use gamboamartin\errores\errores;
 
 class html extends \gamboamartin\template\html {
@@ -35,6 +36,11 @@ class html extends \gamboamartin\template\html {
                                 string $style, array $params = array()): string|array
     {
 
+        $session_id = (new generales())->session_id;
+
+        if($session_id === ''){
+            return $this->error->error(mensaje: 'Error la $session_id esta vacia', data: $session_id);
+        }
         $html = parent::button_href(accion: $accion,etiqueta:  $etiqueta,registro_id:  $registro_id,
             seccion:  $seccion, style: $style, params: $params);
         if(errores::$error){

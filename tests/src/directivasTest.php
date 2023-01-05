@@ -33,7 +33,6 @@ class directivasTest extends test {
 
 
     /**
-     * @throws JsonException
      */
     #[NoReturn] public function test_button_href_status(): void
     {
@@ -56,6 +55,23 @@ class directivasTest extends test {
         $this->assertEquals("<div class='control-group col-sm-1'><label class='control-label' for='status'>Status</label><div class='controls'><a role='button' href='index.php?seccion=a&accion=status&registro_id=-1&session_id=1' class='btn btn-danger col-sm-12'>a</a></div></div>", $resultado);
 
         errores::$error = false;
+    }
+
+    #[NoReturn] public function test_button_href_valida_persona_fisica(): void
+    {
+        errores::$error = false;
+        $_GET['session_id'] = 1;
+        $html_ = new html();
+        $html = new directivas($html_);
+
+        $registro_id = -1;
+        $valida_persona_fisica = true;
+        $resultado = $html->button_href_valida_persona_fisica($registro_id, $valida_persona_fisica);
+        $this->assertIsString($resultado);
+        $this->assertNotTrue(errores::$error);
+        $this->assertEquals("<label class='control-label' for='valida_persona_fisica'>Valida persona fisica</label><div class='controls'><a role='button' href='index.php?seccion=cat_sat_tipo_persona&accion=valida_persona_fisica&registro_id=-1&session_id=1' class='btn btn-danger col-sm-12'>1</a></div>", $resultado);
+        errores::$error = false;
+        
     }
 
 

@@ -1,5 +1,6 @@
 <?php
 namespace gamboamartin\template_1;
+use config\generales;
 use gamboamartin\errores\errores;
 use stdClass;
 
@@ -11,9 +12,16 @@ class directivas extends \gamboamartin\template\directivas {
      * @param int $registro_id Registro identificador
      * @param string $valida_persona_fisica Verifica bool si activo
      * @return array|string
+     * @version 4.2.0
      */
     public function button_href_valida_persona_fisica(int $registro_id, string $valida_persona_fisica): array|string
     {
+
+        $session_id = (new generales())->session_id;
+
+        if($session_id === ''){
+            return $this->error->error(mensaje: 'Error la $session_id esta vacia', data: $session_id);
+        }
 
         $style = 'danger';
         if($valida_persona_fisica === 'activo'){
