@@ -71,7 +71,7 @@ class directivasTest extends test {
         $this->assertNotTrue(errores::$error);
         $this->assertEquals("<label class='control-label' for='valida_persona_fisica'>Valida persona fisica</label><div class='controls'><a role='button' href='index.php?seccion=cat_sat_tipo_persona&accion=valida_persona_fisica&registro_id=-1&session_id=1' class='btn btn-danger col-sm-12'>1</a></div>", $resultado);
         errores::$error = false;
-        
+
     }
 
 
