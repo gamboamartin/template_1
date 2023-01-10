@@ -18,22 +18,18 @@ use config\views; ?>
 <script src="<?php echo (new views())->url_assets; ?>libraries/owl.carousel/owl.carousel.min.js"></script>
 <!-- End owl-carousel -->
 <!-- Start JS MAP  -->
-<script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABFoveisZMRWysqm4eCzhf_Jx2Yka4jEg&libraries=weather,geometry,visualization,places,drawing" type="text/javascript">
-</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABFoveisZMRWysqm4eCzhf_Jx2Yka4jEg&libraries=weather,geometry,visualization,places,drawing"
+        type="text/javascript"></script>
 <script type="text/javascript" src="<?php echo (new views())->url_assets; ?>js/map_infobox.js"></script>
 <script type="text/javascript" src="<?php echo (new views())->url_assets; ?>js/markerclusterer.js"></script>
 <script src="<?php echo (new views())->url_assets; ?>js/map.js" type="text/javascript"></script>
 <!-- End JS MAP  -->
-
 <script src="<?php echo (new views())->url_assets; ?>js/modernizr.custom.js"></script>
 <!-- Start custom template style  -->
 <script src="<?php echo (new views())->url_assets; ?>js/custom_template_style.js" type="text/javascript"></script>
 <!-- End custom template style   -->
-
 <script src="<?php echo (new views())->url_assets; ?>libraries/footable-jquery/js/footable.js"></script>
 <script src="<?php echo (new views())->url_assets; ?>js/footable_init.js"></script>
-
 <script src="<?php echo (new views())->url_assets; ?>js/dpejes/dpe.js"></script>
 <script src="<?php echo (new views())->url_assets; ?>js/dpejes_custom.js"></script>
 <script src="<?php echo (new views())->url_assets; ?>js/dpejes_custom.js"></script>
@@ -44,3 +40,6 @@ use config\views; ?>
 <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/imask/6.4.3/imask.min.js"
+        integrity="sha512-yJ3vm1HmQtcgeMtbUYCp7PuTLyjU+ffCnVNTuE1Uccv1BmkoaJIXt1EjBVGnscjCILc62hTJJJ2rJJBTcw8RjQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
