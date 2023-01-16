@@ -92,7 +92,7 @@ class directivasTest extends test {
         $resultado = $html->input_alias($row_upd, $value_vacio);
         $this->assertIsString($resultado);
         $this->assertNotTrue(errores::$error);
-        $this->assertEquals("<div class='control-group col-sm-6'><label class='control-label' for='alias'>Alias</label><div class='controls'><input type='text' name='alias' value='' class='form-control'  required id='alias' placeholder='Alias' /></div></div>", $resultado);
+        $this->assertEquals("<div class='control-group col-sm-6'><label class='control-label' for='alias'>Alias</label><div class='controls'><input type='text' name='alias' value='' class='form-control' required id='alias' placeholder='Alias' /></div></div>", $resultado);
         errores::$error = false;
     }
 
@@ -113,7 +113,7 @@ class directivasTest extends test {
         $resultado = $html->input_codigo($cols, $row_upd, $value_vacio);
         $this->assertIsString($resultado);
         $this->assertNotTrue(errores::$error);
-        $this->assertEquals("<div class='control-group col-sm-1'><label class='control-label' for='codigo'>Codigo</label><div class='controls'><input type='text' name='codigo' value='' class='form-control'  required id='codigo' placeholder='Codigo' /></div></div>", $resultado);
+        $this->assertEquals("<div class='control-group col-sm-1'><label class='control-label' for='codigo'>Codigo</label><div class='controls'><input type='text' name='codigo' value='' class='form-control' required id='codigo' placeholder='Codigo' /></div></div>", $resultado);
 
         errores::$error = false;
     }
@@ -135,7 +135,7 @@ class directivasTest extends test {
         $resultado = $html->input_codigo_bis($cols, $row_upd, $value_vacio);
         $this->assertIsString($resultado);
         $this->assertNotTrue(errores::$error);
-        $this->assertEquals("<div class='control-group col-sm-1'><label class='control-label' for='codigo_bis'>Codigo BIS</label><div class='controls'><input type='text' name='codigo_bis' value='' class='form-control'  required id='codigo_bis' placeholder='Codigo BIS' /></div></div>", $resultado);
+        $this->assertEquals("<div class='control-group col-sm-1'><label class='control-label' for='codigo_bis'>Codigo BIS</label><div class='controls'><input type='text' name='codigo_bis' value='' class='form-control' required id='codigo_bis' placeholder='Codigo BIS' /></div></div>", $resultado);
 
         errores::$error = false;
     }
@@ -154,7 +154,7 @@ class directivasTest extends test {
         $resultado = $html->input_descripcion($row_upd, $value_vacio);
         $this->assertIsString($resultado);
         $this->assertNotTrue(errores::$error);
-        $this->assertEquals("<div class='control-group col-sm-12'><label class='control-label' for='descripcion'>Descripcion</label><div class='controls'><input type='text' name='descripcion' value='' class='form-control'  required id='descripcion' placeholder='Descripcion' /></div></div>", $resultado);
+        $this->assertEquals("<div class='control-group col-sm-12'><label class='control-label' for='descripcion'>Descripcion</label><div class='controls'><input type='text' name='descripcion' value='' class='form-control' required id='descripcion' placeholder='Descripcion' /></div></div>", $resultado);
 
         errores::$error = false;
     }
@@ -176,7 +176,7 @@ class directivasTest extends test {
         $resultado = $html->input_descripcion_select($row_upd, $value_vacio);
         $this->assertIsString($resultado);
         $this->assertNotTrue(errores::$error);
-        $this->assertEquals("<div class='control-group col-sm-6'><label class='control-label' for='descripcion_select'>Descripcion Select</label><div class='controls'><input type='text' name='descripcion_select' value='' class='form-control'  required id='descripcion_select' placeholder='Descripcion Select' /></div></div>", $resultado);
+        $this->assertEquals("<div class='control-group col-sm-6'><label class='control-label' for='descripcion_select'>Descripcion Select</label><div class='controls'><input type='text' name='descripcion_select' value='' class='form-control' required id='descripcion_select' placeholder='Descripcion Select' /></div></div>", $resultado);
 
         errores::$error = false;
     }
@@ -200,7 +200,7 @@ class directivasTest extends test {
         $resultado = $html->input_text_required($disable, $name, $place_holder, $row_upd, $value_vacio);
         $this->assertIsString($resultado);
         $this->assertNotTrue(errores::$error);
-        $this->assertEquals("<label class='control-label' for='a'>b</label><div class='controls'><input type='text' name='a' value='' class='form-control'  required id='a' placeholder='b' /></div>", $resultado);
+        $this->assertEquals("<label class='control-label' for='a'>b</label><div class='controls'><input type='text' name='a' value='' class='form-control' required id='a' placeholder='b' /></div>", $resultado);
 
         errores::$error = false;
 
