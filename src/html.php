@@ -50,8 +50,12 @@ class html extends \gamboamartin\template\html {
         return str_replace(array('|role|', '|class|'), array("role='button'", "class='btn btn-$style col-sm-12'"), $html);
     }
 
-
-
+    /**
+     * Genera un div para template
+     * @param int $cols numero de columnas css
+     * @param string $html html a integra en div
+     * @return string|array
+     */
     public function div_group(int $cols, string $html): string|array
     {
         $html_r = parent::div_group(cols: $cols,html:  $html);
