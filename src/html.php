@@ -150,16 +150,17 @@ class html extends \gamboamartin\template\html {
      * @param string $place_holder Muestra elemento en input
      * @param bool $required indica si es requerido o no
      * @param mixed $value Valor en caso de que exista
-     * @param mixed $regex Integra un  regex a pattern
+     * @param string $regex Integra un  regex a pattern
+     * @param string $title Integra un  title
      * @return string|array Html en forma de input text
      * @version 0.15.1
      */
     public function text(bool $disabled, string $id_css, string $name, string $place_holder, bool $required,
-                         mixed $value, string $regex = ''): string|array
+                         mixed $value, string $regex = '', string $title = ''): string|array
     {
 
         $html = parent::text(disabled:$disabled,id_css:  $id_css,name:  $name,place_holder:  $place_holder,
-            required:  $required,value:  $value, regex: $regex);
+            required:  $required,value:  $value, regex: $regex, title: $title);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al generar html', data: $html);
         }
