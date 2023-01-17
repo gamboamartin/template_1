@@ -81,6 +81,22 @@ class htmlTest extends test {
         errores::$error = false;
     }
 
+    public function test_div_group(): void
+    {
+        errores::$error = false;
+        $html = new html();
+        //$html = new liberator($html);
+
+        $html_ = '';
+        $cols = 1;
+
+        $resultado = $html->div_group($cols, $html_);
+        $this->assertIsString($resultado);
+        $this->assertNotTrue(errores::$error);
+        $this->assertEquals("<div class='control-group col-sm-1'></div>", $resultado);
+        errores::$error = false;
+    }
+
 
     public function test_label(): void
     {

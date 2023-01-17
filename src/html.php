@@ -55,6 +55,7 @@ class html extends \gamboamartin\template\html {
      * @param int $cols numero de columnas css
      * @param string $html html a integra en div
      * @return string|array
+     * @version 4.10.0
      */
     public function div_group(int $cols, string $html): string|array
     {
