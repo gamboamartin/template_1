@@ -1,26 +1,29 @@
-.btn-modifica{
+.btn-modifica {
     margin-left: 15px;
 }
-.btn-alta{
+
+.btn-alta {
     margin-left: 15px;
 }
-.selectpicker-primary{
-    padding-top: 0!important;
+
+.selectpicker-primary {
+    padding-top: 0 !important;
     padding-bottom: 10px !important;
     border: 0 !important;
 }
 
-.dataTables_filter input{
+.dataTables_filter input {
     border: 1px solid gray;
     border-radius: 5px;
     height: 30px;
 }
 
-.dataTables_filter input:focus{
+.dataTables_filter input:focus {
     border: 1px solid gray;
     border-radius: 5px;
     height: 30px;
 }
+
 div.dataTables_wrapper div.dataTables_length select {
     width: auto;
     display: inline-block;
@@ -29,10 +32,12 @@ div.dataTables_wrapper div.dataTables_length select {
     border-radius: 5px;
     background-color: #fff;
 }
+
 td.details-control {
     background: url('https://www.datatables.net/examples/resources/details_open.png') no-repeat center center;
     cursor: pointer;
 }
+
 tr.shown td.details-control {
     background: url('https://www.datatables.net/examples/resources/details_close.png') no-repeat center center;
 }
@@ -41,6 +46,22 @@ td.details-control1 {
     background: url('https://www.datatables.net/examples/resources/details_open.png') no-repeat center center;
     cursor: pointer;
 }
+
 tr.shown td.details-control1 {
     background: url('https://www.datatables.net/examples/resources/details_close.png') no-repeat center center;
 }
+
+
+input.error {
+    border: 1px solid red;
+}
+
+label.error {
+    color: red;
+    padding-left: 1px;
+    margin-left: .3em;
+    font-size: 10px;
+    margin-bottom: -15px !important
+}
+
+
