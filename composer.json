@@ -29,7 +29,7 @@
         "gamboa.martin/test": "^2.0.0",
         "gamboa.martin/system": "^7.0.0",
         "gamboa.martin/template": "^6.0.0",
-        "gamboa.martin/js_base": "^1.0.0"
+        "gamboa.martin/js_base": "^2.0.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5"
