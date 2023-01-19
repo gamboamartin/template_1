@@ -38,7 +38,14 @@ $links_menu = (new links_menu(link:$controlador->link, registro_id: -1))->links;
     <a class="btn btn-scoll-up color-secondary" id="btn-scroll-up"></a>
 
     <?php include $path_base_template.'java.php'; ?>
-    <?php echo $data->js_view; ?>
+    <?php
+    if($data->js_view_aplica_include){
+        include $data->js_view;
+    }
+    else{
+        echo $data->js_view;
+    }
+    ?>
     <?php if (isset($controlador->datatables)):?>
         <?php foreach ($controlador->datatables as $datatable) {
             $objeto = json_encode($datatable);
