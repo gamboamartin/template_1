@@ -14,7 +14,7 @@ class directivas extends \gamboamartin\template\directivas {
      * @return array|string
      * @version 4.2.0
      */
-    public function button_href_valida_persona_fisica(int $registro_id, string $valida_persona_fisica): array|string
+    final public function button_href_valida_persona_fisica(int $registro_id, string $valida_persona_fisica): array|string
     {
 
         $session_id = (new generales())->session_id;
