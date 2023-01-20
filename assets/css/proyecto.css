@@ -52,16 +52,18 @@ tr.shown td.details-control1 {
 }
 
 
-input.error {
+div.error {
     border: 1px solid red;
+    display: none;
+    margin-top: 20px;
+    padding: 6px;
 }
-
-label.error {
+div.error>label {
+    display: block;
     color: red;
-    padding-left: 1px;
-    margin-left: .3em;
-    font-size: 10px;
-    margin-bottom: -15px !important
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 2px !important;
 }
 
 
