@@ -53,7 +53,7 @@ tr.shown td.details-control1 {
 
 
 div.error {
-    border: 1px solid red;
+    border: 1px solid red !important;
     display: none;
     margin-top: 20px;
     padding: 6px;
