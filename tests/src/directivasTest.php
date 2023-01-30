@@ -229,6 +229,9 @@ class directivasTest extends test {
         $html_ = new html();
         $html = new directivas($html_);
 
+
+
+
         $controler = new controlador_adm_seccion(link: $this->link,paths_conf: $this->paths_conf);
 
         $resultado = $html->mensaje_exito($controler->mensaje_exito);

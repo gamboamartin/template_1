@@ -12,7 +12,7 @@ class html extends \gamboamartin\template\html {
      * @return string|array
      * @version 0.98.20
      */
-    public function button(string $etiqueta): string|array
+    final public function button(string $etiqueta): string|array
     {
         $etiqueta = trim($etiqueta);
         if($etiqueta === ''){
@@ -123,7 +123,7 @@ class html extends \gamboamartin\template\html {
      * @param string $place_holder Etiqueta a mostrar
      * @return string|array string Salida html de label
      */
-    public function label(string $id_css, string $place_holder): string|array
+    final public function label(string $id_css, string $place_holder): string|array
     {
         $r_label = parent::label(id_css:$id_css,place_holder:  $place_holder);
         if(errores::$error){
