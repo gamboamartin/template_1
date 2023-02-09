@@ -28,7 +28,11 @@ datatable = function (identificador, columns, columnDefs, data) {
             }
         },
         columns: columns,
-        columnDefs: _columnDefs
+        columnDefs: _columnDefs,
+        select: {
+            style:    'os',
+            selector: 'td:first-child'
+        }
     });
 };
 
