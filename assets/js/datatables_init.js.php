@@ -1,6 +1,6 @@
 let url_data_table = $(location).attr('href')+"&ws=1" ;
 
-datatable = function (identificador, columns, columnDefs, data) {
+datatable = function (identificador, columns, columnDefs, data, filtro_in) {
 
     let seccion = getParameterByName('seccion');
     let accion = getParameterByName('accion');
@@ -20,7 +20,7 @@ datatable = function (identificador, columns, columnDefs, data) {
         responsive: true,
         ajax: {
             "url": url_data_table,
-            'data' : {data: data},
+            'data' : {data: data, in: filtro_in},
             "error": function(jqXHR, textStatus, errorThrown)
             {
                 let response = jqXHR.responseText;
