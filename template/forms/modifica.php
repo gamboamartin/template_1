@@ -15,3 +15,12 @@
         <?php echo $button; ?>
     <?php }?>
 </div>
+
+<div class="col-md-12 buttons-form">
+    <?php
+    foreach ($controlador->buttons_childrens_alta as $button){ ?>
+        <div class="col-md-4">
+            <?php echo $button; ?>
+        </div>
+    <?php } ?>
+</div>
