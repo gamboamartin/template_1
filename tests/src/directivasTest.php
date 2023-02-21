@@ -74,6 +74,26 @@ class directivasTest extends test {
 
     }
 
+    #[NoReturn] public function test_email_required(): void
+    {
+        errores::$error = false;
+        $html_ = new html();
+        $html = new directivas($html_);
+
+
+        
+        $disabled = true;
+        $name = 'a';
+        $place_holder = 'b';
+        $value_vacio = false;
+        $row_upd = new stdClass();
+        $resultado = $html->email_required($disabled, $name, $place_holder, $row_upd, $value_vacio);
+        $this->assertIsString($resultado);
+        $this->assertNotTrue(errores::$error);
+        $this->assertEquals("<label class='control-label' for='a'>b</label><div class='controls'><input type='text' name='a' value='' class='form-control' disabled required id='a' placeholder='b' pattern='[a-z0-9!#$%&'*+=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$' /></div>", $resultado);
+        errores::$error = false;
+    }
+
 
     /**
      * @throws JsonException
