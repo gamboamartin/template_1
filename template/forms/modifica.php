@@ -9,3 +9,9 @@
         <?php include $controlador->include_inputs_modifica; ?>
     </form>
 </div>
+
+<div class="col-row-12 buttons-form">
+    <?php foreach ($controlador->buttons as $button){ ?>
+        <?php echo $button; ?>
+    <?php }?>
+</div>
