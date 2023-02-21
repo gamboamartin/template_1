@@ -65,5 +65,9 @@ div.error>label {
     font-weight: normal;
     margin-bottom: 2px !important;
 }
+.buttons-form{
+    background-color: #FFF;
+    padding: 10px;
+}
 
 
