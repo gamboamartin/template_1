@@ -64,6 +64,15 @@ class directivas extends \gamboamartin\template\directivas {
     }
 
 
+    /**
+     * Genera un input de tipo telefono como requerido
+     * @param bool $disable
+     * @param string $name
+     * @param string $place_holder
+     * @param stdClass $row_upd
+     * @param bool $value_vacio
+     * @return array|string
+     */
     public function telefono_required(bool $disable, string $name, string $place_holder, stdClass $row_upd,
                                    bool $value_vacio ): array|string
     {
