@@ -27,6 +27,15 @@
 
 <div class="col-md-12 buttons-form">
     <?php
+    foreach ($controlador->buttons_parents_ir as $button){ ?>
+        <div class="col-md-4">
+            <?php echo $button; ?>
+        </div>
+    <?php } ?>
+</div>
+
+<div class="col-md-12 buttons-form">
+    <?php
     foreach ($controlador->buttons_parents_alta as $button){ ?>
         <div class="col-md-4">
             <?php echo $button; ?>
