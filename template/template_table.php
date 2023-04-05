@@ -11,7 +11,7 @@
             </th>
 
             <?php foreach ($this->datatable['columns'] as $column): ?>
-                <th scope="col" style="vertical-align: middle;"><?php print_r($column->title); ?></th>
+                <th scope="col" style="vertical-align: middle;"><?php print_r($column['titulo']); ?></th>
             <?php endforeach; ?>
         </tr>
         </thead>
@@ -25,8 +25,8 @@
                         <div class="control__indicator"></div>
                     </label>
                 </th>
-                <?php foreach ($this->datatable['columns'] as $column): ?>
-                    <td scope="col"><?php echo $registro[$column->data]; ?></td>
+                <?php foreach ($this->datatable['columns'] as $key => $column): ?>
+                    <td scope="col"><?php echo $registro[$key]; ?></td>
                 <?php endforeach; ?>
             </tr>
             <tr class="spacer">
