@@ -1,12 +1,12 @@
 <div class="table-responsive custom-table-responsive" style="margin-bottom: 100px;">
 
     <div class="table-details" style="display: flex; justify-content: space-between;align-items: center;">
-        <div>Mostrando 1 - 5 de 20 entradas</div>
+        <div>Mostrando 1 - <?php echo $registros['ultimo_registro']; ?> de <?php echo $registros['total_registros']; ?> registros</div>
         <div class="fg-line" style="position: relative;">
             <i class="bi bi-search" style="position: absolute;
 top: 10px;
 left: 12px;"></i>
-            <input type="search" placeholder="Buscar registro..." id="search_id-search-input" name="s" value="" style="background: #FFFFFF;border: 1px solid #DBDFEA;
+            <input type="search" placeholder="Buscar registro..." id="search" name="search" value="" style="background: #FFFFFF;border: 1px solid #DBDFEA;
     box-sizing: border-box;
     box-shadow: 0 0.5px 2px rgba(15, 30, 81, 0.11);
     border-radius: 4px;
@@ -19,12 +19,14 @@ left: 12px;"></i>
     <table class="table custom-table caption-top">
         <thead>
         <tr>
-            <th scope="col">
-                <label class="control control--checkbox">
-                    <input type="checkbox" class="js-check-all"/>
-                    <div class="control__indicator"></div>
-                </label>
-            </th>
+            <?php if ($this->datatable['multi_selects']): ?>
+                <th scope="col">
+                    <label class="control control--checkbox">
+                        <input type="checkbox" class="js-check-all"/>
+                        <div class="control__indicator"></div>
+                    </label>
+                </th>
+            <?php endif; ?>
 
             <?php foreach ($this->datatable['columns'] as $column): ?>
                 <th scope="col" style="vertical-align: middle;"><?php print_r($column['titulo']); ?></th>
@@ -36,12 +38,15 @@ left: 12px;"></i>
 
         <?php foreach ($registros['data'] as $registro): ?>
             <tr scope="row">
-                <th scope="row">
-                    <label class="control control--checkbox">
-                        <input type="checkbox"/>
-                        <div class="control__indicator"></div>
-                    </label>
-                </th>
+                <?php if ($this->datatable['multi_selects']): ?>
+                    <th scope="row">
+                        <label class="control control--checkbox">
+                            <input type="checkbox"/>
+                            <div class="control__indicator"></div>
+                        </label>
+                    </th>
+                <?php endif; ?>
+
                 <?php foreach ($this->datatable['columns'] as $key => $column): ?>
                     <td scope="col"><?php echo $registro[$key]; ?></td>
                 <?php endforeach; ?>

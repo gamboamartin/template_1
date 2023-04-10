@@ -1,11 +1,13 @@
 <?php foreach ($registros['data'] as $registro): ?>
     <tr scope="row">
-        <th scope="row">
-            <label class="control control--checkbox">
-                <input type="checkbox"/>
-                <div class="control__indicator"></div>
-            </label>
-        </th>
+        <?php if ($this->datatable['multi_selects']): ?>
+            <th scope="row">
+                <label class="control control--checkbox">
+                    <input type="checkbox"/>
+                    <div class="control__indicator"></div>
+                </label>
+            </th>
+        <?php endif; ?>
         <?php foreach ($this->datatable['columns'] as $key => $column): ?>
             <td scope="col"><?php echo $registro[$key]; ?></td>
         <?php endforeach; ?>
