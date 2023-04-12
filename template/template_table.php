@@ -4,12 +4,13 @@ flex-direction: column;width: 100%; background: #FFFFFF;
 box-shadow: 0 3px 6px rgba(23, 43, 77, 0.08), 0 1px 1px rgba(23, 43, 77, 0.11);
 border-radius: 3px;
 margin-top: 35px;
+margin-bottom: 100px;
 ">
         <h3 style="font-size: 20px;font-style: normal; font-weight: bold; line-height: 24px; padding: 10px; color: #304463;">
             Hola: <?php echo $this->datos_session_usuario['adm_usuario_user']; ?>
         </h3>
         <div id="load" class="container" style="width: 100%; border-top: 2px solid #eaeaea; padding: 10px;">
-            <div id="table-load" class="table-responsive custom-table-responsive" style="margin-bottom: 100px; display: flex;flex-direction: column;">
+            <div id="table-load" class="table-responsive custom-table-responsive" style="display: flex;flex-direction: column;">
                 <div class="table-details"
                      style="display: flex; justify-content: space-between;align-items: center;">
                     <div>Mostrando 1 - <?php echo $registros['ultimo_registro']; ?>
@@ -19,7 +20,7 @@ margin-top: 35px;
                         <i class="bi bi-search" style="position: absolute;
 top: 10px;
 left: 12px;"></i>
-                        <input type="search" placeholder="Buscar registro..." id="search" name="search" value=""
+                        <input type="text" placeholder="Buscar registro..." id="search" name="search"
                                style="background: #FFFFFF;border: 1px solid #DBDFEA;
     box-sizing: border-box;
     box-shadow: 0 0.5px 2px rgba(15, 30, 81, 0.11);
