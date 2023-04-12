@@ -10,7 +10,8 @@
                 <div id="table-load" class="table-responsive custom-table-responsive" style="display: flex;flex-direction: column;">
                     <div class="table-details"
                          style="display: flex; justify-content: space-between;align-items: center;">
-                        <div>Mostrando 0 - <span class="fin-registros">0</span> de <span class="total-registros">0</span> registros
+                        <div>
+                            Mostrando<span id="inicio-registros">0</span> - <span id="fin-registros">0</span> de <span id="total-registros">0</span> registros
                         </div>
                         <div class="fg-line" style="position: relative;">
                             <i class="bi bi-search" style="position: absolute;
