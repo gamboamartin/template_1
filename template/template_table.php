@@ -11,7 +11,7 @@
                     <div class="table-details"
                          style="display: flex; justify-content: space-between;align-items: center;">
                         <div>
-                            Mostrando<span id="inicio-registros">0</span> - <span id="fin-registros">0</span> de <span id="total-registros">0</span> registros
+                            Mostrando <span id="inicio-registros">0</span> - <span id="fin-registros">0</span> de <span id="total-registros">0</span> registros
                         </div>
                         <div class="fg-line" style="position: relative;">
                             <i class="bi bi-search" style="position: absolute;
