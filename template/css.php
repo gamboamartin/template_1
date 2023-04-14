@@ -19,6 +19,7 @@ use config\views; ?>
 <!-- Start JS MAP  -->
 <link rel="stylesheet" href="<?php echo (new views())->url_assets; ?>css/map.css" />
 <!-- End JS MAP  -->
+<link rel="stylesheet" href="<?php echo (new views())->url_assets; ?>css/load_table.css" />
 <!-- Start blueimp  -->
 <link rel="stylesheet" href="<?php echo (new views())->url_assets; ?>css/blueimp-gallery.min.css" />
 <!-- End blueimp  -->

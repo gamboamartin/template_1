@@ -35,6 +35,8 @@ use config\views; ?>
 <script src="<?php echo (new views())->url_assets; ?>js/dpejes_custom.js"></script>
 <script src="<?php echo (new views())->url_assets; ?>js/facebook.js" type="text/javascript"></script>
 <script src="<?php echo (new views())->url_js; ?>base.js" type="text/javascript"></script>
+<script src="<?php echo (new views())->url_js; ?>funciones.js" type="text/javascript"></script>
+<script src="<?php echo (new views())->url_assets; ?>js/load_table.js"></script>
 <script src="<?php echo (new views())->url_assets; ?>js/datatables.min.js"></script>
 <script src="<?php echo (new views())->url_assets; ?>js/datatables_init.js.php"></script>
 <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
