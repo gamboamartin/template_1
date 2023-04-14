@@ -1,5 +1,5 @@
 <?php if ($this->datatable['type'] === "scroll") : ?>
-    <div id="load-table" class="load-table col-md-9" style="display: flex; justify-content: center;">
+    <div id="load-table" class="load-table col-md-12" style="display: flex; justify-content: center;">
         <div class="content " style="display: flex;flex-direction: column;width: 100%; background: #FFFFFF;
         box-shadow: 0 3px 6px rgba(23, 43, 77, 0.08), 0 1px 1px rgba(23, 43, 77, 0.11);border-radius: 3px;
         margin-top: 35px;margin-bottom: 100px;">
