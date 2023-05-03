@@ -102,11 +102,11 @@ class html extends \gamboamartin\template\html {
 
 
     public function fecha(bool $disabled, string $id_css, string $name, string $place_holder, bool $required,
-                         mixed $value): string|array
+                         mixed $value, bool $value_hora = false): string|array
     {
 
         $html = parent::fecha(disabled:$disabled,id_css:  $id_css,name:  $name,place_holder:  $place_holder,
-            required:  $required,value:  $value);
+            required:  $required,value:  $value, value_hora: $value_hora);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al generar html', data: $html);
         }
