@@ -32,10 +32,11 @@ class navTest extends test {
         $seccion = 'b';
         $links->b = new stdClass();
         $links->b->lista = 'd';
-        $resultado = $nav->li_menu_principal_lista($links, $seccion);
+        $resultado = $nav->li_menu_principal_lista($links, $seccion, 'a');
+
         $this->assertIsString($resultado);
         $this->assertNotTrue(errores::$error);
-        $this->assertEquals("<li class='nav-item'><a class='nav-link' href='d' role='button'>B</a></li>", $resultado);
+        $this->assertEquals("<li class='nav-item'><a class='nav-link' href='d' role='button'>A</a></li>", $resultado);
         errores::$error = false;
     }
 
@@ -51,12 +52,12 @@ class navTest extends test {
         $seccion = 'a';
         $links->a = new stdClass();
         $links->a->lista = 'a';
-        $resultado = $nav->link_menu_principal_lista($links, $seccion);
+        $resultado = $nav->link_menu_principal_lista($links, $seccion, 'fN');
 
 
         $this->assertIsString($resultado);
         $this->assertNotTrue(errores::$error);
-        $this->assertEquals("<a class='nav-link' href='a' role='button'>A</a>", $resultado);
+        $this->assertEquals("<a class='nav-link' href='a' role='button'>FN</a>", $resultado);
 
 
         errores::$error = false;

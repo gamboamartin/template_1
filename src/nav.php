@@ -13,19 +13,24 @@ class nav{
 
     /**
      * Genera un li para menu principal
-     * @version 0.11.0
      * @param stdClass $links Objeto con link para frontend
      * @param string $seccion Seccion en ejecucion
+     * @param string $title_seccion
      * @return array|string
+     * @version 0.11.0
      */
-    private function li_menu_principal_lista(stdClass $links, string $seccion): array|string
+    private function li_menu_principal_lista(stdClass $links, string $seccion, string $title_seccion): array|string
     {
         $valida = $this->valida_links(links: $links,seccion: $seccion);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al validar datos', data: $valida);
         }
+        $title_seccion = trim($title_seccion);
+        if($title_seccion === ''){
+            return $this->error->error(mensaje: 'Error title_seccion esta vacio', data: $title_seccion);
+        }
 
-        $a = $this->link_menu_principal_lista(links:$links, seccion: $seccion);
+        $a = $this->link_menu_principal_lista(links:$links, seccion: $seccion, title_seccion: $title_seccion);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al generar liga', data: $a);
         }
@@ -35,21 +40,26 @@ class nav{
 
     /**
      * Genera un link tipo a para menu
-     * @version v0.11.0
      * @param stdClass $links Objeto con link para frontend
      * @param string $seccion Seccion en ejecucion
+     * @param string $title_seccion
      * @return string|array
+     * @version v0.11.0
      */
-    private function link_menu_principal_lista(stdClass $links, string $seccion): string|array
+    private function link_menu_principal_lista(stdClass $links, string $seccion, string $title_seccion): string|array
     {
 
         $valida = $this->valida_links(links: $links,seccion: $seccion);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al validar datos', data: $valida);
         }
+        $title_seccion = trim($title_seccion);
+        if($title_seccion === ''){
+            return $this->error->error(mensaje: 'Error title_seccion esta vacio', data: $title_seccion);
+        }
 
         $liga = $links->$seccion->lista;
-        $title_seccion = str_replace('_', ' ', $seccion);
+        $title_seccion = str_replace('_', ' ', $title_seccion);
         $title_seccion = ucwords($title_seccion);
         return "<a class='nav-link' href='$liga' role='button'>$title_seccion</a>";
     }
@@ -83,7 +93,8 @@ class nav{
                 }
             }
 
-            $li = $this->li_menu_principal_lista(links: $links,seccion: $etiqueta_menu);
+            $li = $this->li_menu_principal_lista(links: $links,seccion: $seccion['adm_seccion_descripcion'],
+                title_seccion: $etiqueta_menu);
             if(errores::$error){
                 return $this->error->error(mensaje: 'Error al generar li', data: $li);
             }
