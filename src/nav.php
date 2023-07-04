@@ -76,7 +76,14 @@ class nav{
                 return $this->error->error(mensaje: 'Error al validar datos', data: $valida);
             }
 
-            $li = $this->li_menu_principal_lista(links: $links,seccion: $seccion['adm_seccion_descripcion']);
+            $etiqueta_menu = $seccion['adm_seccion_descripcion'];
+            if(isset($seccion['adm_seccion_etiqueta_label'])){
+                if(trim($seccion['adm_seccion_etiqueta_label']) !==''){
+                    $etiqueta_menu = $seccion['adm_seccion_etiqueta_label'];
+                }
+            }
+
+            $li = $this->li_menu_principal_lista(links: $links,seccion: $etiqueta_menu);
             if(errores::$error){
                 return $this->error->error(mensaje: 'Error al generar li', data: $li);
             }

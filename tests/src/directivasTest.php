@@ -90,7 +90,7 @@ class directivasTest extends test {
         $resultado = $html->email_required($disabled, $name, $place_holder, $row_upd, $value_vacio);
         $this->assertIsString($resultado);
         $this->assertNotTrue(errores::$error);
-        $this->assertEquals("<label class='control-label' for='a'>b</label><div class='controls'><input type='text' name='a' value='' class='form-control' disabled required id='a' placeholder='b' pattern='[a-z0-9!#$%&'*+=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$' /></div>", $resultado);
+        $this->assertEquals("<label class='control-label' for='a'>b</label><div class='controls'><input type='text' name='a' value='' class='form-control' disabled required id='a' placeholder='b' pattern='[^@\s]+@[^@\s]+[^.\s]' /></div>", $resultado);
         errores::$error = false;
     }
 
