@@ -1,6 +1,7 @@
 <?php
 namespace tests\controllers;
 
+use gamboamartin\administrador\tests\base_test;
 use gamboamartin\controllers\controlador_adm_seccion;
 use gamboamartin\errores\errores;
 use gamboamartin\template_1\directivas;
@@ -246,19 +247,30 @@ class directivasTest extends test {
     #[NoReturn] public function test_mensaje_exito(): void
     {
         errores::$error = false;
+
+
+        $_SESSION['grupo_id'] = 2;
+        $_SESSION['usuario_id'] = 2;
+
         $html_ = new html();
         $html = new directivas($html_);
 
 
+        $alta = (new base_test())->alta_adm_accion(link: $this->link,adm_seccion_descripcion: 'adm_session',descripcion: 'login');
+        if(errores::$error){
+            print_r($alta);
+            exit;
+        }
 
 
         $controler = new controlador_adm_seccion(link: $this->link,paths_conf: $this->paths_conf);
 
         $resultado = $html->mensaje_exito($controler->mensaje_exito);
 
+
         $this->assertIsString($resultado);
         $this->assertNotTrue(errores::$error);
-        $this->assertEquals("", $resultado);
+        $this->assertStringContainsStringIgnoringCase("alert alert-success no-margin-bottom alert-dismissible", $resultado);
 
         errores::$error = false;
         $html_ = new html();
@@ -284,8 +296,22 @@ class directivasTest extends test {
         $_GET['session_id'] = 1;
         $_GET['seccion'] = 'adm_seccion';
         $_GET['accion'] = 'lista';
-        $_SESSION['grupo_id'] = 1;
+        $_SESSION['grupo_id'] = 2;
+        $_SESSION['usuario_id'] = 2;
         $_SESSION['warning'][]['mensaje'] = 'a';
+
+        $del = (new base_test())->del_adm_seccion(link: $this->link);
+        if(errores::$error){
+            print_r($del);
+            exit;
+        }
+
+        $alta = (new base_test())->alta_adm_accion(link: $this->link,adm_seccion_descripcion: 'adm_seccion',descripcion: 'lista');
+        if(errores::$error){
+            print_r($alta);
+            exit;
+        }
+
         $controler = new controlador_adm_seccion(link: $this->link, paths_conf: $this->paths_conf);
         //$controler->mensaje_exito = 'a'
         $resultado = $html->mensaje_warning($controler->mensaje_warning);
