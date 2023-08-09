@@ -18,17 +18,17 @@
         }
     },
     "require": {
-        "gamboa.martin/administrador": "^10.0.0",
+        "gamboa.martin/administrador": "^11.0.0",
       "gamboa.martin/base_modelos": "^2.0.0",
       "gamboa.martin/calculo": "^2.0.0",
-      "gamboa.martin/compresor": "^2.0.0",
+      "gamboa.martin/compresor": "^3.0.0",
       "gamboa.martin/validacion": "^2.0.0",
       "gamboa.martin/configuraciones": "^1.0.0",
       "gamboa.martin/plugins": "^2.0.0",
         "gamboa.martin/errores": "^2.0.0",
         "gamboa.martin/test": "^2.0.0",
-        "gamboa.martin/system": "^9.0.0",
-        "gamboa.martin/template": "^7.0.0",
+        "gamboa.martin/system": "^10.0.0",
+        "gamboa.martin/template": "^8.0.0",
         "gamboa.martin/js_base": "^2.0.0"
     },
     "require-dev": {
