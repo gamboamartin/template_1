@@ -161,11 +161,11 @@ class html extends \gamboamartin\template\html {
      * @version 0.15.1
      */
     public function text(bool $disabled, string $id_css, string $name, string $place_holder, bool $required,
-                         mixed $value, string $regex = '', string $title = ''): string|array
+                         mixed $value, array $ids_css = array(), string $regex = '', string $title = ''): string|array
     {
 
-        $html = parent::text(disabled:$disabled,id_css:  $id_css,name:  $name,place_holder:  $place_holder,
-            required:  $required,value:  $value, regex: $regex, title: $title);
+        $html = parent::text(disabled: $disabled, id_css: $id_css, name: $name, place_holder: $place_holder,
+            required: $required, value: $value, ids_css: $ids_css, regex: $regex, title: $title);
         if(errores::$error){
             return $this->error->error(mensaje: 'Error al generar html', data: $html);
         }
