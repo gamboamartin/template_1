@@ -12,7 +12,9 @@ datatable = function (identificador, columns, columnDefs, data, filtro_in) {
         url_data_table = url_data_table.replace(seccion, _seccion);
     }
 
+    let _columns = asigna_columns(columns);
     let _columnDefs = asigna_columnDefs(columnDefs);
+    let _checks = verify_check(columns);
 
     var table = $(identificador).DataTable({
         processing: true,
@@ -26,20 +28,34 @@ datatable = function (identificador, columns, columnDefs, data, filtro_in) {
                 document.body.innerHTML = response.replace('[]', '')
             }
         },
-        columns: columns,
+        columns: _columns,
         columnDefs: _columnDefs,
-        select: {
-            style: 'os',
-            selector: 'td:first-child'
-        },
+        'select': _checks.select,
+        'order': _checks.order
     });
 };
+
+verify_check = function (columns) {
+
+    let salida = {'select': {'style': 'single'}, 'order': []};
+
+    if (columns.filter(e => e.title.trim() === '').length > 0) {
+        salida.select = {'style': 'multi'};
+        salida.order = [[1, 'asc']];
+    }
+    return salida;
+}
 
 asigna_columns = function (columns) {
     let salida = []
 
     columns.forEach(function (valor, indice, array) {
-        salida.push({data: valor});
+
+        if (valor.data === "check") {
+            valor.data = null;
+        }
+
+        salida.push(valor);
     });
 
     return salida;
@@ -64,25 +80,41 @@ asigna_columnDefs = function (columnDefs) {
                     expresion += button
                 })
             } else if (object.type === "menu") {
-                var item = "";
+                var items = "";
 
                 objects.forEach(function (e) {
-                    let button = `${row[e]}`;
-                    item += button
+                    let etiqueta = `${row[e]}`;
+                    var href = $(etiqueta).prop('href');
+                    var title = $(etiqueta).prop('title');
+                    var style = $(etiqueta).prop('class').split("btn-")[1];
+
+                    var button = `<a class="dropdown-item text-${style}" href="${href}">${title}</a>`;
+
+                    items += button
                 })
 
-                var menu = `<div class="dropdown">`;
-                menu += `<span id="dropdownMenu" class="dropdown-toggle badge badge-info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Acciones</span>`;
-                //menu += `<div id="dropdownMenu" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opciones</div>`;
-                menu += `<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu">`;
-                menu += `<div class="dropdown-menu-inner" style="display: flex; flex-direction: column; gap: 3px; padding: 10px;">`;
-                menu += item;
-                menu += `</div></div></div>`;
-
-                expresion = menu;
+                expresion = `<div class="dropdown text-center">
+                              <button class="btn btn-transparent p-0 dark:text-high-emphasis" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-three-dots-vertical"></i>
+                              </button>
+                              <div class="dropdown-menu dropdown-menu-end" style="">
+                                ${items}
+                            </div>`;
             }
             return expresion;
         }
+
+        if (object.type === "check") {
+            delete object.render
+            delete object.className
+            delete object.defaultContent
+            delete object.orderable
+            delete object.rendered
+            delete object.data
+
+            object.checkboxes = {'selectRow': true}
+        }
+
         salida.push(object);
     });
     return salida;
