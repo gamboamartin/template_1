@@ -19,7 +19,7 @@
     },
     "require": {
       "php": "^8.3",
-        "gamboa.martin/administrador": "^13.0.0",
+        "gamboa.martin/administrador": "^14.0.0",
       "gamboa.martin/base_modelos": "^3.0.0",
       "gamboa.martin/calculo": "^3.0.0",
       "gamboa.martin/compresor": "^4.0.0",
@@ -28,8 +28,8 @@
       "gamboa.martin/plugins": "^3.0.0",
         "gamboa.martin/errores": "^4.0.0",
         "gamboa.martin/test": "^3.0.0",
-        "gamboa.martin/system": "^15.0.0",
-        "gamboa.martin/template": "^13.0.0",
+        "gamboa.martin/system": "^16.0.0",
+        "gamboa.martin/template": "^14.0.0",
         "gamboa.martin/js_base": "^3.0.0"
     },
     "require-dev": {
