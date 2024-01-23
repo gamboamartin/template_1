@@ -12,7 +12,6 @@ class directivas extends \gamboamartin\template\directivas {
      * @param int $registro_id Registro identificador
      * @param string $valida_persona_fisica Verifica bool si activo
      * @return array|string
-     * @version 4.2.0
      */
     final public function button_href_valida_persona_fisica(int $registro_id, string $valida_persona_fisica): array|string
     {
