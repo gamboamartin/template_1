@@ -5,7 +5,7 @@ datatable = function (identificador, columns, columnDefs, data, filtro_in) {
     let seccion = getParameterByName('seccion');
     let accion = getParameterByName('accion');
 
-    url_data_table = url_data_table.replace(accion, "get_data");
+    url_data_table = url_data_table.replace(`accion=${accion}`, "accion=get_data");
 
     if (identificador !== ".datatable") {
         let _seccion = identificador.slice(1)
