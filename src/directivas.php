@@ -19,7 +19,7 @@ class directivas extends \gamboamartin\template\directivas {
         $session_id = (new generales())->session_id;
 
         if($session_id === ''){
-            return $this->error->error(mensaje: 'Error la $session_id esta vacia', data: $session_id);
+            return $this->error->error(mensaje: 'Error la $session_id esta vacia', data: $session_id, es_final: true);
         }
 
         $style = 'danger';
