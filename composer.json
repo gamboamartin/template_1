@@ -28,7 +28,7 @@
       "gamboa.martin/plugins": "^6.0.0",
         "gamboa.martin/errores": "^6.0.0",
         "gamboa.martin/test": "^5.0.0",
-        "gamboa.martin/system": "^22.0.0",
+        "gamboa.martin/system": "^23.0.0",
         "gamboa.martin/template": "^21.0.0",
         "gamboa.martin/js_base": "^5.0.0",
       "phpunit/phpunit": "^10.0.0"
