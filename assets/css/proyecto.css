@@ -88,3 +88,99 @@ div.error>label {
     padding-top: 0px;
 }
 
+/* Estilos generales del dropdown */
+.dropdown-menu {
+    position: absolute !important;
+    left: auto !important;
+    right: 0 !important;
+    transform: translateX(-30px);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 160px;
+    padding: 8px 0;
+}
+
+/* Espaciado entre los elementos del menú */
+.dropdown-item {
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #333;
+    transition: background 0.2s, color 0.2s;
+}
+
+/* Efecto hover */
+.dropdown-item:hover {
+    background-color: #f5f5f5 !important;
+    color: #000 !important;
+}
+
+/* Colores personalizados para cada acción */
+.dropdown-item.text-warning {
+    color: #f39c12;
+}
+
+.dropdown-item.text-warning:hover {
+    background-color: rgba(243, 156, 18, 0.2);
+}
+
+.dropdown-item.text-danger {
+    color: #e74c3c;
+}
+
+.dropdown-item.text-danger:hover {
+    background-color: rgba(231, 76, 60, 0.2);
+}
+
+.dropdown-item.text-success {
+    color: #27ae60;
+}
+
+.dropdown-item.text-success:hover {
+    background-color: rgba(39, 174, 96, 0.2);
+}
+
+/* Botón de tres puntos */
+.btn-transparent {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+    transition: color 0.3s;
+}
+
+.btn-transparent:hover {
+    color: #000;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        min-width: 120px;
+    }
+
+    .dropdown-item {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.pagination-controls button {
+    border: none;
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.pagination-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
