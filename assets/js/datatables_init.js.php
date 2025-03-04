@@ -116,8 +116,10 @@ asigna_columnDefs = function (columnDefs) {
                     var href = $(etiqueta).prop("href");
                     var title = $(etiqueta).prop("title");
                     var style = $(etiqueta).prop("class").split("btn-")[1];
+                    var target = $(etiqueta).prop("target");
+                    var targetAttr = target ? `target="${target}"` : "";
 
-                    var button = `<a class="dropdown-item text-${style}" href="${href}">${title}</a>`;
+                    var button = `<a class="dropdown-item text-${style}" href="${href}" ${targetAttr}>${title}</a>`;
                     items.push(button);
                 });
 
