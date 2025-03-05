@@ -89,7 +89,7 @@ div.error>label {
 }
 
 /* Estilos generales del dropdown */
-.dropdown-menu {
+table tbody tr td .dropdown-menu {
     position: absolute !important;
     left: auto !important;
     right: 0 !important;
