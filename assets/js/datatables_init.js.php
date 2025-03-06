@@ -22,7 +22,12 @@ datatable = function (identificador, columns, columnDefs, data, filtro_in) {
         responsive: true,
         ajax: {
             "url": url_data_table,
-            'data': {data: data, in: filtro_in},
+            'data': function (d) {
+                d.data = data;
+                d.in = filtro_in;
+                d.filtros_avanzados = filtros_avanzados();
+            },
+
             "error": function (jqXHR, textStatus, errorThrown) {
                 let response = jqXHR.responseText;
                 document.body.innerHTML = response.replace('[]', '')
@@ -64,6 +69,34 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+filtros_avanzados = function () {
+    let filtros = {};
+
+    $(".filtros-avanzados input").each(function () {
+        let $input = $(this);
+        let grupo = $input.data("ajax");
+        let filtro = $input.data("filtro_campo");
+        let key = $input.data("filtro_key");
+        let value = $.trim($input.val());
+
+        if (grupo && filtro && value) {
+            if (!filtros[grupo]) {
+                filtros[grupo] = {};
+            }
+
+            if (grupo === "rango-fechas") {
+                filtros[grupo]['filtro_tabla'] = filtro;
+                filtro = key;
+            }
+
+            filtros[grupo][filtro] = value
+
+        }
+    });
+
+    return filtros;
+};
 
 verify_check = function (columns) {
 
