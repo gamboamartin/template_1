@@ -28,8 +28,11 @@ $links_menu = (new links_menu(link:$controlador->link, registro_id: -1))->links;
     <header class="header">
         <?php include $path_base_template.'nav/_head.php'?>
     </header><!-- /.header-->
+
     <main class="main section-color-primary">
-        <?php  include($data->include_action); ?>
+        <div style="display: flex; flex-direction: column; justify-content: center; padding: 15px 35px;">
+            <?php  include($data->include_action); ?>
+        </div>
     </main><!-- /.main-part-->
 
     <footer class="footer">

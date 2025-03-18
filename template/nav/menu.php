@@ -5,7 +5,7 @@ use config\views;
 use gamboamartin\template_1\nav;
 
 ?>
-<div class="pull-left menu">
+<div class="pull-left menu" style="padding: 0!important;">
     <?php include (new views())->ruta_templates.'nav/_menu_responsive.php'?>
 
     <nav class="navbar text-color-primary">

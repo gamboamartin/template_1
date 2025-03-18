@@ -10,9 +10,9 @@ $path_base_template = (new views())->ruta_templates;
         <?php include $path_base_template.'nav/_redes_sociales.php' ?>
 
         <section class="header-inner">
-            <div class="container">
+            <div style="display: flex; flex-direction: column; justify-content: center; padding: 0 35px;">
                 <?php if($data->menu){ ?>
-                <?php include $path_base_template.'nav/menu.php' ?>
+                    <?php include $path_base_template.'nav/menu.php' ?>
                 <?php } ?>
             </div>
         </section><!-- /.menu-->
